@@ -1,1 +1,24 @@
-const db=JSON.parse(localStorage.getItem("rf"))||{r:0,d:0};function salvar(){db.r=+receita.value||0;db.d=+despesa.value||0;localStorage.setItem("rf",JSON.stringify(db));saldo.innerText="Saldo: R$ "+(db.r-db.d).toFixed(2)}
+
+const db=JSON.parse(localStorage.getItem('rf11'))||{itens:[]};
+function adicionar(){
+db.itens.push({
+descricao:descricao.value,
+valor:+valor.value,
+tipo:tipo.value,
+data:new Date().toLocaleDateString()
+});
+save();
+}
+function excluir(i){db.itens.splice(i,1);save();}
+function save(){localStorage.setItem('rf11',JSON.stringify(db));render();}
+function render(){
+let saldo=0;
+lista.innerHTML='';
+db.itens.forEach((x,i)=>{
+saldo += x.tipo==='receita'?x.valor:-x.valor;
+lista.innerHTML+=`<li>${x.data} - ${x.descricao}: R$ ${x.valor}
+<button onclick='excluir(${i})'>X</button></li>`;
+});
+saldo.innerText='Saldo: R$ '+saldo.toFixed(2);
+}
+render();

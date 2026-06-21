@@ -1,1 +1,26 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>Ramalho Finance</title></head><body><div class="card"><h1>R💰 Ramalho Finance</h1><input id="receita" type="number" placeholder="Receita"><input id="despesa" type="number" placeholder="Despesa"><button onclick="salvar()">Salvar</button><h2 id="saldo"></h2></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<title>R💰 Ramalho Finance v1.1</title>
+</head>
+<body>
+<div class="container">
+<h1>R💰 Ramalho Finance</h1>
+<div class="card">
+<input id="descricao" placeholder="Descrição">
+<input id="valor" type="number" placeholder="Valor">
+<select id="tipo">
+<option value="receita">Receita</option>
+<option value="despesa">Despesa</option>
+</select>
+<button onclick="adicionar()">Adicionar</button>
+</div>
+<div class="card">
+<h2 id="saldo"></h2>
+<h3>Histórico</h3>
+<ul id="lista"></ul>
+</div>
+</div>
+<script src="app.js"></script>
+</body></html>
