@@ -1,0 +1,1 @@
+const db=JSON.parse(localStorage.getItem("rf"))||{r:0,d:0};function salvar(){db.r=+receita.value||0;db.d=+despesa.value||0;localStorage.setItem("rf",JSON.stringify(db));saldo.innerText="Saldo: R$ "+(db.r-db.d).toFixed(2)}
