@@ -1,52 +1,41 @@
-# R💰 Ramalho Finance Pro V4
+# R💰 Ramalho Finance Pro V5
 
-Aplicativo financeiro pessoal futurista, responsivo e instalável como PWA.
+Versão profissional com visual futurista, responsiva para notebook, desktop e celular.
 
-## Funcionalidades
-
-- Dashboard premium responsivo
-- Receitas e despesas múltiplas
+## Funções
+- Dashboard animado
+- Partículas tecnológicas no fundo
+- Login local
+- Login com Google preparado via Firebase
+- Receitas/despesas
 - Categorias personalizadas
-- Despesas recorrentes automáticas
-- Histórico mensal
+- Recorrências mensais
+- Histórico mensal automático
 - Metas financeiras
-- Projeção de metas
 - Score financeiro
 - Insights inteligentes
-- Gráficos com Chart.js
+- Gráficos com Chart.js e fallback
 - Exportação CSV
-- Backup e restauração JSON
+- Backup/restauração JSON
 - PDF via impressão do navegador
-- Tema claro/escuro
-- PWA instalável no celular e computador
-- Login com Google preparado via Firebase
+- PWA instalável
+- Compatível com GitHub Pages
 
-## Como publicar no GitHub Pages
+## Firebase
+Eu não consigo criar o Firebase dentro da sua conta. Para ativar:
 
-1. Crie um repositório chamado `ramalho-finance`
-2. Envie todos os arquivos deste projeto
-3. Vá em `Settings > Pages`
-4. Em `Source`, escolha `Deploy from a branch`
-5. Selecione `main` e `/root`
-6. Salve
-
-O site ficará disponível em:
-
-`https://SEU_USUARIO.github.io/ramalho-finance/`
-
-## Como instalar no celular
-
-1. Abra o link no Google Chrome do Android
-2. Toque nos três pontinhos
-3. Escolha `Instalar aplicativo` ou `Adicionar à tela inicial`
-
-## Como ativar login com Google
-
-1. Acesse Firebase
+1. Acesse https://console.firebase.google.com/
 2. Crie um projeto
-3. Ative Authentication > Google
-4. Abra `firebase-config.js`
-5. Cole as chaves do seu projeto
-6. Descomente o bloco indicado
+3. Vá em Authentication
+4. Ative Google
+5. Crie um app Web
+6. Copie o objeto firebaseConfig
+7. Cole no arquivo firebase-config.js
+8. Altere `window.FIREBASE_ENABLED = false` para `true`
 
-Enquanto o Firebase não for configurado, o aplicativo funciona normalmente em modo local usando `localStorage`.
+## GitHub Pages
+1. Crie o repositório `ramalho-finance`
+2. Envie os arquivos
+3. Vá em Settings > Pages
+4. Selecione Deploy from branch
+5. Branch main e pasta /root
