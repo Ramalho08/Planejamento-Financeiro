@@ -3,124 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Ramalho Finance Pro V3 - aplicativo financeiro pessoal futurista." />
+  <meta name="theme-color" content="#050816" />
+  <title>R💰 Ramalho Finance Pro V4</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
-  <title>R💰 Ramalho Finance Pro V3</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="animated-bg"></div>
+  <canvas id="particles"></canvas>
 
   <main class="app-shell">
-    <header class="hero glass">
-      <div>
-        <p class="eyebrow">R💰 Finance App</p>
-        <h1>Ramalho Finance Pro V3</h1>
-        <p>Controle financeiro pessoal com histórico mensal, metas, recorrências, backup e visual futurista.</p>
-      </div>
-      <div class="hero-actions">
-        <button class="ghost" id="themeToggle">🌙 Tema</button>
-        <button class="primary" id="newMonthBtn">Fechar mês</button>
-      </div>
-    </header>
-
-    <section class="dashboard">
-      <article class="metric glass">
-        <span>Receitas</span>
-        <strong id="incomeTotal">R$ 0,00</strong>
-      </article>
-      <article class="metric glass">
-        <span>Despesas</span>
-        <strong id="expenseTotal">R$ 0,00</strong>
-      </article>
-      <article class="metric glass">
-        <span>Saldo atual</span>
-        <strong id="balanceTotal">R$ 0,00</strong>
-      </article>
-      <article class="metric glass">
-        <span>Economia</span>
-        <strong id="savingRate">0%</strong>
-      </article>
-    </section>
-
-    <section class="grid-2">
-      <form class="panel glass" id="transactionForm">
-        <h2>Nova movimentação</h2>
-        <label>Descrição<input id="description" required placeholder="Ex: Salário, mercado, ônibus" /></label>
-        <label>Valor<input id="amount" required type="number" min="0" step="0.01" placeholder="R$ 0,00" /></label>
-        <label>Tipo
-          <select id="type">
-            <option value="income">Receita</option>
-            <option value="expense">Despesa</option>
-          </select>
-        </label>
-        <label>Categoria
-          <select id="category">
-            <option>Salário</option>
-            <option>Freelance</option>
-            <option>Alimentação</option>
-            <option>Transporte</option>
-            <option>Moradia</option>
-            <option>Educação</option>
-            <option>Saúde</option>
-            <option>Lazer</option>
-            <option>Assinaturas</option>
-            <option>Outros</option>
-          </select>
-        </label>
-        <label class="check"><input type="checkbox" id="recurring" /> Repetir automaticamente todo mês</label>
-        <button class="primary" type="submit">Adicionar</button>
-      </form>
-
-      <section class="panel glass">
-        <h2>Meta financeira</h2>
-        <label>Nome da meta<input id="goalName" placeholder="Ex: Notebook" /></label>
-        <label>Valor da meta<input id="goalAmount" type="number" min="0" step="0.01" placeholder="R$ 0,00" /></label>
-        <button class="primary" id="saveGoal">Salvar meta</button>
-        <div class="progress-box">
-          <div class="progress-label"><span id="goalLabel">Sem meta definida</span><span id="goalPercent">0%</span></div>
-          <div class="progress"><div id="goalBar"></div></div>
-        </div>
-        <p class="insight" id="smartInsight">Cadastre receitas e despesas para receber insights.</p>
-      </section>
-    </section>
-
-    <section class="grid-2">
-      <section class="panel glass">
-        <h2>Resumo por categoria</h2>
-        <canvas id="categoryChart" height="220"></canvas>
-      </section>
-      <section class="panel glass">
-        <h2>Evolução mensal</h2>
-        <canvas id="monthChart" height="220"></canvas>
-      </section>
-    </section>
-
-    <section class="panel glass">
-      <div class="section-head">
-        <h2>Movimentações do mês</h2>
-        <div class="actions-row">
-          <button class="ghost" id="exportCsv">Exportar CSV</button>
-          <button class="ghost" id="backupJson">Backup JSON</button>
-          <label class="file-button">Restaurar JSON<input type="file" id="restoreJson" accept="application/json" /></label>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">R💰</div>
+        <div>
+          <h1>Ramalho Finance</h1>
+          <span>Pro V4</span>
         </div>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Tipo</th><th>Valor</th><th></th></tr></thead>
-          <tbody id="transactionTable"></tbody>
-        </table>
-      </div>
-    </section>
 
-    <section class="panel glass">
-      <h2>Histórico de meses</h2>
-      <div id="historyList" class="history-list"></div>
+      <nav>
+        <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+        <button class="nav-btn" data-page="transactions">Movimentações</button>
+        <button class="nav-btn" data-page="goals">Metas</button>
+        <button class="nav-btn" data-page="reports">Relatórios</button>
+        <button class="nav-btn" data-page="settings">Configurações</button>
+      </nav>
+
+      <div class="user-card" id="userCard">
+        <div class="avatar" id="avatar">R</div>
+        <div>
+          <strong id="userName">Usuário local</strong>
+          <small id="userEmail">offline/localStorage</small>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="monthLabel"></p>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" id="installBtn">Instalar App</button>
+          <button class="ghost" id="themeBtn">Tema</button>
+          <button class="primary" id="googleLoginBtn">Login com Google</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="page active">
+        <div class="hero-card">
+          <div>
+            <span class="eyebrow">Visão geral</span>
+            <h3 id="heroBalance">R$ 0,00</h3>
+            <p id="heroInsight">Cadastre receitas e despesas para gerar insights.</p>
+          </div>
+          <div class="health-score">
+            <span id="healthScore">0</span>
+            <small>score financeiro</small>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <article class="metric"><span>Receitas</span><strong id="incomeTotal">R$ 0,00</strong></article>
+          <article class="metric"><span>Despesas</span><strong id="expenseTotal">R$ 0,00</strong></article>
+          <article class="metric"><span>Economia</span><strong id="savingRate">0%</strong></article>
+          <article class="metric"><span>Reserva ideal</span><strong id="emergencyFund">R$ 0,00</strong></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel">
+            <h3>Gastos por categoria</h3>
+            <canvas id="categoryChart"></canvas>
+          </article>
+          <article class="panel">
+            <h3>Evolução mensal</h3>
+            <canvas id="monthlyChart"></canvas>
+          </article>
+        </div>
+
+        <article class="panel">
+          <h3>Insights inteligentes</h3>
+          <div id="insights" class="insights"></div>
+        </article>
+      </section>
+
+      <section id="transactions" class="page">
+        <div class="form-grid">
+          <article class="panel">
+            <h3>Nova movimentação</h3>
+            <form id="transactionForm">
+              <input id="description" placeholder="Descrição" required />
+              <input id="amount" type="number" step="0.01" placeholder="Valor" required />
+              <select id="type">
+                <option value="income">Receita</option>
+                <option value="expense">Despesa</option>
+              </select>
+              <select id="category"></select>
+              <label class="check">
+                <input type="checkbox" id="recurring" />
+                Repetir todo mês
+              </label>
+              <button class="primary" type="submit">Adicionar</button>
+            </form>
+          </article>
+
+          <article class="panel">
+            <h3>Filtros</h3>
+            <input id="search" placeholder="Pesquisar movimentação" />
+            <select id="filterType">
+              <option value="all">Todas</option>
+              <option value="income">Receitas</option>
+              <option value="expense">Despesas</option>
+            </select>
+            <button class="ghost" id="closeMonthBtn">Fechar mês atual</button>
+          </article>
+        </div>
+
+        <article class="panel">
+          <h3>Histórico do mês</h3>
+          <div id="transactionList" class="transaction-list"></div>
+        </article>
+      </section>
+
+      <section id="goals" class="page">
+        <div class="form-grid">
+          <article class="panel">
+            <h3>Nova meta</h3>
+            <form id="goalForm">
+              <input id="goalName" placeholder="Nome da meta. Ex: Notebook" required />
+              <input id="goalTarget" type="number" step="0.01" placeholder="Valor alvo" required />
+              <input id="goalSaved" type="number" step="0.01" placeholder="Valor já guardado" />
+              <button class="primary" type="submit">Criar meta</button>
+            </form>
+          </article>
+          <article class="panel">
+            <h3>Projeção</h3>
+            <p id="goalProjection">Cadastre metas para visualizar previsões.</p>
+          </article>
+        </div>
+        <div id="goalList" class="goal-list"></div>
+      </section>
+
+      <section id="reports" class="page">
+        <div class="panel actions-panel">
+          <h3>Exportação e backup</h3>
+          <button class="primary" id="exportCsvBtn">Exportar CSV</button>
+          <button class="primary" id="exportJsonBtn">Backup JSON</button>
+          <label class="file-btn">
+            Restaurar backup
+            <input type="file" id="importJsonInput" accept="application/json" />
+          </label>
+          <button class="ghost" id="printBtn">Gerar PDF / Imprimir</button>
+        </div>
+
+        <article class="panel">
+          <h3>Resumo anual</h3>
+          <div id="yearSummary"></div>
+        </article>
+      </section>
+
+      <section id="settings" class="page">
+        <article class="panel">
+          <h3>Login com Google</h3>
+          <p>
+            Esta versão já vem preparada para autenticação Google via Firebase.
+            Para ativar, crie um projeto no Firebase, habilite Google Auth e cole
+            suas chaves em <strong>firebase-config.js</strong>.
+          </p>
+          <pre><code>const firebaseConfig = { ...suas_chaves_aqui };</code></pre>
+        </article>
+
+        <article class="panel">
+          <h3>Categorias personalizadas</h3>
+          <form id="categoryForm">
+            <input id="newCategory" placeholder="Nova categoria" />
+            <button class="primary" type="submit">Adicionar categoria</button>
+          </form>
+          <div id="categoryTags"></div>
+        </article>
+      </section>
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
