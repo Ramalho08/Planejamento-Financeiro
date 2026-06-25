@@ -1,226 +1,56 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050816">
-  <title>R💰 Ramalho Finance Pro V6</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <canvas id="techBg"></canvas>
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050816">
+<title>R💰 Ramalho Finance Ultimate V7</title>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head><body>
+<canvas id="bg"></canvas>
+<main class="shell">
+<aside class="side">
+<div class="brand"><div class="logo">R💰</div><div><h1>Ramalho Finance</h1><span>Ultimate V7</span></div></div>
+<nav>
+<button class="nav on" data-p="dash">Dashboard</button>
+<button class="nav" data-p="wallets">Carteiras</button>
+<button class="nav" data-p="txs">Movimentações</button>
+<button class="nav" data-p="cards">Cartões</button>
+<button class="nav" data-p="invest">Investimentos</button>
+<button class="nav" data-p="goals">Metas</button>
+<button class="nav" data-p="ai">Assistente</button>
+<button class="nav" data-p="reports">Relatórios</button>
+</nav>
+<div class="profile"><b>Modo local</b><small>Firebase depois</small></div>
+</aside>
 
-  <main class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">R💰</div>
-        <div>
-          <h1>Ramalho Finance</h1>
-          <span>Pro V6 • Local/PWA</span>
-        </div>
-      </div>
+<section class="main">
+<header class="top"><div><h2 id="title">Dashboard</h2><p id="date"></p></div><div><button id="install" class="ghost">Instalar</button><button id="theme" class="ghost">Tema</button></div></header>
 
-      <nav>
-        <button class="nav active" data-page="dashboard">Dashboard</button>
-        <button class="nav" data-page="movements">Movimentações</button>
-        <button class="nav" data-page="budget">Orçamentos</button>
-        <button class="nav" data-page="goals">Metas</button>
-        <button class="nav" data-page="calendar">Calendário</button>
-        <button class="nav" data-page="reports">Relatórios</button>
-        <button class="nav" data-page="settings">Configurações</button>
-      </nav>
+<section id="dash" class="page on">
+<div class="hero"><div><span>Patrimônio total</span><h1 id="net">R$ 0,00</h1><p id="insight">Cadastre dados para ativar análises.</p></div><div class="score"><b id="score">0</b><small>score</small></div></div>
+<div class="metrics">
+<div class="metric good"><span>Receitas</span><b id="income">R$ 0,00</b></div>
+<div class="metric bad"><span>Despesas</span><b id="expense">R$ 0,00</b></div>
+<div class="metric"><span>Cartões</span><b id="debt">R$ 0,00</b></div>
+<div class="metric"><span>Investimentos</span><b id="invTotal">R$ 0,00</b></div>
+<div class="metric"><span>Economia</span><b id="saveRate">0%</b></div>
+<div class="metric"><span>Projeção 12m</span><b id="proj">R$ 0,00</b></div>
+</div>
+<div class="grid"><div class="panel"><h3>Fluxo</h3><canvas id="flow"></canvas></div><div class="panel"><h3>Categorias</h3><canvas id="catChart"></canvas></div></div>
+<div class="grid"><div class="panel"><h3>Alertas</h3><div id="alerts"></div></div><div class="panel"><h3>Carteiras</h3><div id="walletMini"></div></div></div>
+</section>
 
-      <div class="profile">
-        <div class="avatar">R</div>
-        <div>
-          <strong>Modo local</strong>
-          <small>Sem Firebase por enquanto</small>
-        </div>
-      </div>
-    </aside>
+<section id="wallets" class="page"><div class="grid"><div class="panel"><h3>Nova carteira</h3><form id="walletForm"><input id="walletName" placeholder="Nome"><select id="walletType"><option>Banco</option><option>Pix</option><option>Dinheiro</option><option>Poupança</option></select><input id="walletBalance" type="number" step="0.01" placeholder="Saldo"><button class="primary">Adicionar</button></form></div><div class="panel"><h3>Carteiras</h3><div id="walletList"></div></div></div></section>
 
-    <section class="main">
-      <header class="topbar">
-        <div>
-          <h2 id="pageTitle">Dashboard</h2>
-          <p id="dateLabel"></p>
-        </div>
-        <div class="actions">
-          <button id="quickIncome" class="ghost">+ Receita</button>
-          <button id="quickExpense" class="ghost">+ Despesa</button>
-          <button id="installBtn" class="ghost">Instalar</button>
-          <button id="themeBtn" class="ghost">Tema</button>
-        </div>
-      </header>
+<section id="txs" class="page"><div class="grid"><div class="panel"><h3>Nova movimentação</h3><form id="txForm"><input id="desc" placeholder="Descrição"><input id="amount" type="number" step="0.01" placeholder="Valor"><select id="type"><option value="income">Receita</option><option value="expense">Despesa</option></select><select id="category"></select><select id="walletSel"></select><label><input id="recurring" type="checkbox"> Recorrente</label><button class="primary">Adicionar</button></form></div><div class="panel"><h3>Filtros</h3><input id="search" placeholder="Pesquisar"><select id="filter"><option value="all">Tudo</option><option value="income">Receitas</option><option value="expense">Despesas</option></select></div></div><div class="panel"><h3>Histórico</h3><div id="txList"></div></div></section>
 
-      <section id="dashboard" class="page active">
-        <article class="hero">
-          <div>
-            <span class="eyebrow">patrimônio mensal</span>
-            <h1 id="balanceHero">R$ 0,00</h1>
-            <p id="heroText">Cadastre suas movimentações para gerar análises inteligentes.</p>
-          </div>
-          <div class="ai-card">
-            <span id="score">0</span>
-            <small>score financeiro</small>
-          </div>
-        </article>
+<section id="cards" class="page"><div class="grid"><div class="panel"><h3>Novo cartão</h3><form id="cardForm"><input id="cardName" placeholder="Nome"><input id="cardLimit" type="number" step="0.01" placeholder="Limite"><input id="cardDue" type="number" placeholder="Vencimento"><button class="primary">Adicionar</button></form></div><div class="panel"><h3>Compra parcelada</h3><form id="parcelForm"><input id="parcelDesc" placeholder="Descrição"><input id="parcelAmount" type="number" step="0.01" placeholder="Total"><input id="parcelCount" type="number" placeholder="Parcelas"><select id="parcelCard"></select><button class="primary">Lançar</button></form></div></div><div class="panel"><h3>Cartões</h3><div id="cardList"></div></div></section>
 
-        <section class="metrics">
-          <article class="metric positive"><span>Receitas</span><strong id="incomeTotal">R$ 0,00</strong></article>
-          <article class="metric negative"><span>Despesas</span><strong id="expenseTotal">R$ 0,00</strong></article>
-          <article class="metric"><span>Economia</span><strong id="savingRate">0%</strong></article>
-          <article class="metric"><span>Reserva ideal</span><strong id="emergencyFund">R$ 0,00</strong></article>
-          <article class="metric"><span>Previsão 6 meses</span><strong id="projection6">R$ 0,00</strong></article>
-          <article class="metric"><span>Status</span><strong id="statusLabel">Neutro</strong></article>
-        </section>
+<section id="invest" class="page"><div class="grid"><div class="panel"><h3>Novo investimento</h3><form id="invForm"><input id="invName" placeholder="Nome"><select id="invType"><option>Renda fixa</option><option>Ações</option><option>FIIs</option><option>Cripto</option></select><input id="invAmount" type="number" step="0.01" placeholder="Valor"><input id="invRate" type="number" step="0.01" placeholder="% ao mês"><button class="primary">Adicionar</button></form></div><div class="panel"><h3>Projeção</h3><p id="invProjection"></p></div></div><div class="panel"><h3>Investimentos</h3><div id="invList"></div></div></section>
 
-        <section class="grid two">
-          <article class="panel">
-            <h3>Gastos por categoria</h3>
-            <canvas id="categoryChart"></canvas>
-            <div id="categoryBars" class="bars"></div>
-          </article>
-          <article class="panel">
-            <h3>Evolução mensal</h3>
-            <canvas id="monthlyChart"></canvas>
-          </article>
-        </section>
+<section id="goals" class="page"><div class="grid"><div class="panel"><h3>Nova meta</h3><form id="goalForm"><input id="goalName" placeholder="Nome"><input id="goalTarget" type="number" step="0.01" placeholder="Alvo"><input id="goalSaved" type="number" step="0.01" placeholder="Guardado"><button class="primary">Criar</button></form></div><div class="panel"><h3>Simulador</h3><input id="monthlySave" type="number" step="0.01" placeholder="Guardar por mês"><button id="simGoal" class="ghost">Simular</button><p id="goalSim"></p></div></div><div id="goalList"></div></section>
 
-        <section class="grid two">
-          <article class="panel">
-            <h3>Assistente financeiro</h3>
-            <div id="smartInsights" class="insights"></div>
-          </article>
-          <article class="panel">
-            <h3>Radar de risco</h3>
-            <div id="riskRadar" class="risk-box"></div>
-          </article>
-        </section>
-      </section>
+<section id="ai" class="page"><div class="panel"><h3>Assistente financeiro local</h3><button id="plan" class="primary">Gerar plano do mês</button><div id="planText"></div></div></section>
 
-      <section id="movements" class="page">
-        <section class="grid two">
-          <article class="panel">
-            <h3>Nova movimentação</h3>
-            <form id="transactionForm">
-              <input id="description" placeholder="Descrição" required>
-              <input id="amount" type="number" step="0.01" placeholder="Valor" required>
-              <select id="type">
-                <option value="income">Receita</option>
-                <option value="expense">Despesa</option>
-              </select>
-              <select id="category"></select>
-              <input id="dueDate" type="date">
-              <label class="check"><input id="recurring" type="checkbox"> Repetir todo mês</label>
-              <button class="primary" type="submit">Adicionar</button>
-            </form>
-          </article>
-
-          <article class="panel">
-            <h3>Filtros inteligentes</h3>
-            <input id="search" placeholder="Pesquisar">
-            <select id="filterType">
-              <option value="all">Tudo</option>
-              <option value="income">Receitas</option>
-              <option value="expense">Despesas</option>
-            </select>
-            <select id="filterCategory">
-              <option value="all">Todas categorias</option>
-            </select>
-          </article>
-        </section>
-
-        <article class="panel">
-          <h3>Histórico do mês</h3>
-          <div id="transactionList" class="list"></div>
-        </article>
-      </section>
-
-      <section id="budget" class="page">
-        <section class="grid two">
-          <article class="panel">
-            <h3>Criar orçamento por categoria</h3>
-            <form id="budgetForm">
-              <select id="budgetCategory"></select>
-              <input id="budgetLimit" type="number" step="0.01" placeholder="Limite mensal">
-              <button class="primary" type="submit">Salvar orçamento</button>
-            </form>
-          </article>
-          <article class="panel">
-            <h3>Orçamentos ativos</h3>
-            <div id="budgetList" class="list"></div>
-          </article>
-        </section>
-      </section>
-
-      <section id="goals" class="page">
-        <section class="grid two">
-          <article class="panel">
-            <h3>Nova meta</h3>
-            <form id="goalForm">
-              <input id="goalName" placeholder="Nome da meta" required>
-              <input id="goalTarget" type="number" step="0.01" placeholder="Valor alvo" required>
-              <input id="goalSaved" type="number" step="0.01" placeholder="Valor já guardado">
-              <input id="goalDeadline" type="date">
-              <button class="primary" type="submit">Criar meta</button>
-            </form>
-          </article>
-          <article class="panel">
-            <h3>Simulador de meta</h3>
-            <input id="simAmount" type="number" step="0.01" placeholder="Quanto você pode guardar por mês?">
-            <button class="ghost" id="simulateBtn">Simular</button>
-            <p id="simulationResult"></p>
-          </article>
-        </section>
-        <div id="goalList" class="goal-list"></div>
-      </section>
-
-      <section id="calendar" class="page">
-        <article class="panel">
-          <h3>Calendário financeiro</h3>
-          <p class="muted">Mostra vencimentos cadastrados para receitas/despesas.</p>
-          <div id="calendarList" class="list"></div>
-        </article>
-      </section>
-
-      <section id="reports" class="page">
-        <article class="panel tools">
-          <h3>Relatórios e segurança</h3>
-          <button class="primary" id="exportCsvBtn">Exportar CSV</button>
-          <button class="primary" id="exportJsonBtn">Backup JSON</button>
-          <label class="file-btn">Restaurar backup<input id="importJson" type="file" accept="application/json"></label>
-          <button class="ghost" id="printBtn">PDF / Imprimir</button>
-          <button class="danger" id="clearBtn">Limpar tudo</button>
-        </article>
-        <article class="panel">
-          <h3>Resumo mensal</h3>
-          <div id="monthlySummary" class="list"></div>
-        </article>
-      </section>
-
-      <section id="settings" class="page">
-        <section class="grid two">
-          <article class="panel">
-            <h3>Categorias personalizadas</h3>
-            <form id="categoryForm">
-              <input id="newCategory" placeholder="Nova categoria">
-              <button class="primary" type="submit">Adicionar</button>
-            </form>
-            <div id="categoryTags" class="tags"></div>
-          </article>
-          <article class="panel">
-            <h3>Configurações do app</h3>
-            <label class="check"><input id="privacyMode" type="checkbox"> Modo privacidade: esconder valores</label>
-            <button class="ghost" id="sampleDataBtn">Inserir dados de exemplo</button>
-          </article>
-        </section>
-      </section>
-    </section>
-  </main>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<section id="reports" class="page"><div class="panel tools"><button id="csv" class="primary">Exportar CSV</button><button id="backup" class="primary">Backup JSON</button><label class="file">Restaurar<input id="restore" type="file" accept="application/json"></label><button id="print" class="ghost">PDF / Imprimir</button><button id="sample" class="ghost">Dados exemplo</button><button id="clear" class="danger">Limpar</button></div><div class="panel"><h3>Resumo mensal</h3><div id="summary"></div></div></section>
+</section></main>
+<script src="app.js"></script></body></html>

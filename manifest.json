@@ -1,11 +1,10 @@
 {
-  "name": "Ramalho Finance Pro V6",
+  "name": "Ramalho Finance Ultimate V7",
   "short_name": "R💰 Finance",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
-  "description": "Aplicativo financeiro pessoal inteligente e futurista.",
   "icons": [
     {
       "src": "assets/icon.svg",

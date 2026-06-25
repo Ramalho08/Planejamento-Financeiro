@@ -1,22 +1,6 @@
-# R💰 Ramalho Finance Pro V6
+# R💰 Ramalho Finance Ultimate V7
 
-Versão focada em inteligência, responsividade e uso local/PWA.
+Versão com carteiras, cartões, parcelamento, investimentos, metas, assistente local, PWA, relatórios e dashboard futurista.
 
-## Novidades da V6
-- Dashboard futurista mais completo
-- Orçamento por categoria
-- Radar de risco
-- Simulador de metas
-- Calendário de vencimentos
-- Modo privacidade para esconder valores
-- Dados de exemplo
-- Melhor compatibilidade para notebook, desktop e celular
-- PWA offline
-- Exportação CSV
-- Backup e restauração JSON
-- PDF via imprimir
-
-## Publicar no GitHub Pages
-1. Crie repositório `ramalho-finance`
-2. Envie todos os arquivos
-3. Settings > Pages > Deploy from branch > main > root
+## GitHub Pages
+Suba os arquivos e ative Settings > Pages.
