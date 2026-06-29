@@ -1,24 +1,13 @@
-# R💰 Ramalho Finance V14.3 NO CACHE ROOT
+# R💰 Ramalho Finance V15 Ultimate Professional
 
-Esta versão foi feita especificamente para resolver o problema de o GitHub Pages continuar mostrando a V13.
+Padrão NO CACHE ROOT, pronto para GitHub Pages pelo celular.
 
-## Diferença desta versão
-- Arquivos ficam direto na raiz do ZIP.
-- Não tem service-worker.
-- Remove cache antigo automaticamente.
-- Mostra na tela: V14.3 NO CACHE ROOT.
+Suba estes arquivos na raiz:
+- index.html
+- style.css
+- app-v15-professional.js
+- manifest.json
+- .nojekyll
+- assets/icon.svg
 
-## Como subir pelo celular
-1. No GitHub, apague os arquivos antigos do repositório.
-2. Envie estes arquivos direto na raiz:
-   - index.html
-   - style.css
-   - app-v14-3-no-cache.js
-   - manifest.json
-   - assets/icon.svg
-   - .nojekyll
-3. Em Settings > Pages, use main / root.
-4. Abra o site com ?v=143nocache no final.
-
-Exemplo:
-https://SEU-USUARIO.github.io/SEU-REPOSITORIO/?v=143nocache
+Abra com: ?v=15pro
