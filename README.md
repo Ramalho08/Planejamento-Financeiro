@@ -1,25 +1,19 @@
-# R💰 Ramalho Finance V12 Mobile Pro
+# R💰 Ramalho Finance V12.1 FIX
 
-Versão feita para celular, sem precisar de computador, npm ou React.
+Correção para tela branca no GitHub Pages/celular.
 
-## Como publicar pelo celular
-1. Baixe e extraia o ZIP.
-2. Entre no GitHub pelo navegador.
-3. Abra seu repositório.
-4. Envie os arquivos da pasta `ramalho-finance`.
-5. Ative GitHub Pages: Settings > Pages > Deploy from branch > main > root.
+## Importante
+Antes de testar esta versão, no celular:
+1. Abra o site publicado.
+2. Toque nos três pontinhos do navegador.
+3. Atualize a página.
+4. Se continuar antigo, limpe cache/dados do site ou mude o nome do repositório/URL.
 
-## Recursos
-- Interface mobile profissional
-- Menu inferior estilo aplicativo
-- Dashboard futurista
-- Receitas e despesas
-- Carteiras/contas
-- Cartões e parcelas
-- Metas
-- Investimentos
-- Assistente financeiro local
-- Checklist de saúde financeira
-- Backup JSON
-- Exportação CSV
-- PWA instalável
+## Publicar pelo celular
+Envie estes arquivos para o GitHub Pages:
+- index.html
+- style.css
+- app.js
+- manifest.json
+- service-worker.js
+- assets/icon.svg
