@@ -1,20 +1,24 @@
-# R💰 Ramalho Finance V16 Ultimate AI Edition
+# R💰 Ramalho Finance V17.6 Deluxe Plus
 
-Padrão NO CACHE ROOT, pronto para GitHub Pages pelo celular.
+Versão local melhorada antes do Firebase.
 
-Suba estes arquivos na raiz:
+## Subir na raiz
 - index.html
 - style.css
-- app-v16-ai.js
+- app-v17-6-plus.js
+- firebase-config.js
 - manifest.json
 - .nojekyll
 - assets/icon.svg
 
-Abra com: ?v=16ai
+Abra com:
+?v=176plus
 
-Novidades:
-- Finance AI 3.0
-- Previsão inteligente
-- Maiores gastos
-- Filtros por tipo e categoria
-- Diagnóstico mais completo
+## Novidades
+- Planejamento mensal
+- Categorias personalizadas
+- PIN local simples
+- Orçamentos
+- Assinaturas
+- Cloud Prep preservado
+- Padrão NO CACHE ROOT
