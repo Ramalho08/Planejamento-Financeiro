@@ -1,26 +1,25 @@
-# R💰 Ramalho Finance V11.1 — GitHub Pages Ready
+# R💰 Ramalho Finance V12 Mobile Pro
 
-Esta versão corrige a tela branca da V11.
+Versão feita para celular, sem precisar de computador, npm ou React.
 
-## Importante
-A V11 anterior era React/Vite e precisava de build.  
-Esta V11.1 abre direto no navegador e no GitHub Pages.
-
-## Como publicar
-1. Extraia o ZIP.
-2. Envie o conteúdo da pasta `ramalho-finance` para o GitHub.
-3. Ative GitHub Pages em Settings > Pages.
-4. Use branch `main` e pasta `/root`.
+## Como publicar pelo celular
+1. Baixe e extraia o ZIP.
+2. Entre no GitHub pelo navegador.
+3. Abra seu repositório.
+4. Envie os arquivos da pasta `ramalho-finance`.
+5. Ative GitHub Pages: Settings > Pages > Deploy from branch > main > root.
 
 ## Recursos
+- Interface mobile profissional
+- Menu inferior estilo aplicativo
 - Dashboard futurista
-- Carteiras
 - Receitas e despesas
-- Cartões
-- Investimentos
+- Carteiras/contas
+- Cartões e parcelas
 - Metas
-- Assistente local
-- Relatórios
+- Investimentos
+- Assistente financeiro local
+- Checklist de saúde financeira
 - Backup JSON
 - Exportação CSV
-- PWA
+- PWA instalável
