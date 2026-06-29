@@ -1,41 +1,256 @@
-<!doctype html><html lang="pt-BR"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>R💰 Ramalho Finance V15 Professional</title>
-<link rel="manifest" href="./manifest.json?v=16ai">
-<link rel="stylesheet" href="./style.css?v=16ai">
-</head><body>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050816">
+<title>R💰 Ramalho Finance V16.5 Ultimate Stable</title>
+<link rel="manifest" href="./manifest.json?v=165stable">
+<link rel="stylesheet" href="./style.css?v=165stable">
+</head>
+<body>
 <div class="bg"></div>
+
 <main>
-<header class="top"><div><strong>R💰 Ramalho Finance</strong><small>V16 Ultimate AI Edition — NO CACHE ROOT</small></div><button id="theme">Tema</button></header>
+<header class="top">
+  <div>
+    <strong>R💰 Ramalho Finance</strong>
+    <small>V16.5 Ultimate Stable — NO CACHE ROOT</small>
+  </div>
+  <button id="themeBtn">Tema</button>
+</header>
+
 <section id="errorBox" class="error hidden"></section>
 
 <section id="dashboard" class="page active">
-<article class="hero"><div class="badge">V16 Ultimate AI Edition</div><span id="greeting">Olá, Guilherme</span><h1 id="net">R$ 0,00</h1><p id="insight">Finance AI 3.0 carregado com segurança.</p><div class="scoregrid"><div><b id="score">0</b><small>score</small></div><div><b id="saving">0%</b><small>economia</small></div><div><b id="risk">Baixo</b><small>risco</small></div></div></article>
-<section class="exec"><article><span>Disponível</span><b id="available">R$0</b></article><article><span>Previsão 12m</span><b id="growth">R$0</b></article><article><span>Cartão</span><b id="cardPct">0%</b></article><article><span>Reserva</span><b id="reserveMonths">0 meses</b></article></section>
-<section class="cards"><article><span>Receitas</span><b id="income">R$0</b></article><article><span>Despesas</span><b id="expense">R$0</b></article><article><span>Saldo</span><b id="balance">R$0</b></article><article><span>Reserva ideal</span><b id="reserve">R$0</b></article><article><span>Carteiras</span><b id="walletTotal">R$0</b></article><article><span>Investimentos</span><b id="investTotal">R$0</b></article><article><span>Cartões</span><b id="cardUsed">R$0</b></article><article><span>Recorrências</span><b id="recurring">R$0</b></article></section>
-<section class="panel premium"><h3>Finance AI 3.0 — diagnóstico</h3><div id="smart"></div></section>
-<section class="panel"><h3>Previsão inteligente</h3><div id="prediction"></div></section>
-<section class="panel"><h3>Maiores gastos</h3><div id="topExpenses"></div></section>
-<section class="panel"><h3>Fluxo financeiro</h3><div id="bars"></div></section>
-<section class="panel"><h3>Gastos por categoria</h3><div id="catBars"></div></section>
-<section class="panel"><h3>Evolução mensal</h3><div id="monthCompare"></div></section>
-<section class="panel"><h3>Central de notificações</h3><div id="alerts"></div></section>
+  <article class="hero">
+    <div class="badge">V16.5 Ultimate Stable</div>
+    <span id="greeting">Olá</span>
+    <h1 id="netWorth">R$ 0,00</h1>
+    <p id="mainInsight">Base estável carregada com segurança.</p>
+    <div class="scoregrid">
+      <div><b id="score">0</b><small>score</small></div>
+      <div><b id="savingRate">0%</b><small>economia</small></div>
+      <div><b id="riskLevel">Baixo</b><small>risco</small></div>
+    </div>
+  </article>
+
+  <section class="exec">
+    <article><span>Disponível</span><b id="availableMoney">R$ 0,00</b></article>
+    <article><span>Previsão 12m</span><b id="projection12">R$ 0,00</b></article>
+    <article><span>Uso do cartão</span><b id="cardUsage">0%</b></article>
+    <article><span>Reserva</span><b id="reserveMonths">0 meses</b></article>
+  </section>
+
+  <section class="cards">
+    <article><span>Receitas</span><b id="incomeTotal">R$ 0,00</b></article>
+    <article><span>Despesas</span><b id="expenseTotal">R$ 0,00</b></article>
+    <article><span>Saldo mensal</span><b id="balanceTotal">R$ 0,00</b></article>
+    <article><span>Reserva ideal</span><b id="reserveIdeal">R$ 0,00</b></article>
+    <article><span>Carteiras</span><b id="walletTotal">R$ 0,00</b></article>
+    <article><span>Investimentos</span><b id="investmentTotal">R$ 0,00</b></article>
+    <article><span>Cartões</span><b id="cardDebt">R$ 0,00</b></article>
+    <article><span>Assinaturas</span><b id="subTotal">R$ 0,00</b></article>
+  </section>
+
+  <section class="panel premium"><h3>Finance AI — diagnóstico</h3><div id="aiSummary"></div></section>
+  <section class="panel"><h3>Fluxo financeiro</h3><div id="flowBars"></div></section>
+  <section class="panel"><h3>Gastos por categoria</h3><div id="categoryBars"></div></section>
+  <section class="panel"><h3>Maiores gastos</h3><div id="topExpenses"></div></section>
+  <section class="panel"><h3>Comparação mensal</h3><div id="monthlyCompare"></div></section>
+  <section class="panel"><h3>Alertas</h3><div id="alerts"></div></section>
 </section>
 
-<section id="launch" class="page"><section class="panel"><h3>Novo lançamento</h3><input id="desc" placeholder="Descrição"><input id="amount" type="number" placeholder="Valor"><select id="type"><option value="income">Receita</option><option value="expense">Despesa</option></select><select id="cat"><option>Alimentação</option><option>Transporte</option><option>Moradia</option><option>Educação</option><option>Saúde</option><option>Lazer</option><option>Cartão</option><option>Investimentos</option><option>Pix</option><option>Assinaturas</option><option>Salário</option><option>Outros</option></select><input id="due" type="date"><label><input id="recur" type="checkbox"> Recorrente / assinatura</label><button id="addTx" class="primary">Adicionar lançamento</button></section><section class="panel"><h3>Histórico do mês</h3><input id="search" placeholder="Pesquisar lançamento"><select id="filterType"><option value="all">Tudo</option><option value="income">Receitas</option><option value="expense">Despesas</option></select><select id="filterCat"><option value="all">Todas categorias</option></select><button id="sortTx">Ordenar por valor</button><div id="txList"></div></section></section>
+<section id="launch" class="page">
+  <section class="panel">
+    <h3>Novo lançamento</h3>
+    <input id="txDesc" placeholder="Descrição">
+    <input id="txAmount" type="number" placeholder="Valor">
+    <select id="txType"><option value="income">Receita</option><option value="expense">Despesa</option></select>
+    <select id="txCategory"></select>
+    <input id="txDue" type="date">
+    <label class="check"><input id="txRecurring" type="checkbox"> Recorrente / assinatura</label>
+    <button id="addTxBtn" class="primary">Adicionar lançamento</button>
+  </section>
 
-<section id="wallets" class="page"><section class="panel"><h3>Carteira / Conta</h3><input id="walletName" placeholder="Ex: Nubank, Pix, Dinheiro"><input id="walletBalance" type="number" placeholder="Saldo"><button id="addWallet" class="primary">Adicionar carteira</button></section><section class="panel"><h3>Transferência</h3><select id="fromWallet"></select><select id="toWallet"></select><input id="transferAmount" type="number" placeholder="Valor"><button id="transfer" class="primary">Transferir</button></section><section class="panel"><h3>Minhas carteiras</h3><div id="walletList"></div></section></section>
+  <section class="panel">
+    <h3>Histórico e filtros</h3>
+    <input id="searchTx" placeholder="Pesquisar">
+    <select id="filterType"><option value="all">Tudo</option><option value="income">Receitas</option><option value="expense">Despesas</option></select>
+    <select id="filterCategory"><option value="all">Todas categorias</option></select>
+    <button id="sortTxBtn">Ordenar por valor</button>
+    <div id="txList"></div>
+  </section>
+</section>
 
-<section id="cardsPage" class="page"><section class="panel"><h3>Cartão</h3><input id="cardName" placeholder="Nome do cartão"><input id="cardLimit" type="number" placeholder="Limite"><input id="cardDue" type="number" placeholder="Dia de vencimento"><button id="addCard" class="primary">Adicionar cartão</button></section><section class="panel"><h3>Compra parcelada</h3><input id="parcelDesc" placeholder="Descrição"><input id="parcelTotal" type="number" placeholder="Valor total"><input id="parcelCount" type="number" placeholder="Parcelas"><select id="parcelCard"></select><button id="addParcel" class="primary">Lançar parcelas</button></section><section class="panel"><h3>Cartões e faturas</h3><div id="cardList"></div></section></section>
+<section id="wallets" class="page">
+  <section class="panel">
+    <h3>Carteira / Conta</h3>
+    <input id="walletName" placeholder="Ex: Nubank, Pix, Dinheiro">
+    <input id="walletBalance" type="number" placeholder="Saldo">
+    <button id="addWalletBtn" class="primary">Adicionar carteira</button>
+  </section>
+  <section class="panel">
+    <h3>Transferência</h3>
+    <select id="fromWallet"></select>
+    <select id="toWallet"></select>
+    <input id="transferAmount" type="number" placeholder="Valor">
+    <button id="transferBtn" class="primary">Transferir</button>
+  </section>
+  <section class="panel"><h3>Minhas carteiras</h3><div id="walletList"></div></section>
+</section>
+
+<section id="cardsPage" class="page">
+  <section class="panel">
+    <h3>Cartão</h3>
+    <input id="cardName" placeholder="Nome do cartão">
+    <input id="cardLimit" type="number" placeholder="Limite">
+    <input id="cardDue" type="number" placeholder="Dia de vencimento">
+    <button id="addCardBtn" class="primary">Adicionar cartão</button>
+  </section>
+  <section class="panel">
+    <h3>Compra parcelada</h3>
+    <input id="parcelDesc" placeholder="Descrição">
+    <input id="parcelTotal" type="number" placeholder="Valor total">
+    <input id="parcelCount" type="number" placeholder="Parcelas">
+    <select id="parcelCard"></select>
+    <button id="addParcelBtn" class="primary">Lançar parcelas</button>
+  </section>
+  <section class="panel"><h3>Cartões e faturas</h3><div id="cardList"></div></section>
+</section>
+
+<section id="budgets" class="page">
+  <section class="panel premium"><h3>Orçamentos por categoria</h3><div class="alert">Defina limites mensais e acompanhe quando estiver perto de passar.</div></section>
+  <section class="panel">
+    <select id="budgetCategory"></select>
+    <input id="budgetLimit" type="number" placeholder="Limite mensal">
+    <button id="addBudgetBtn" class="primary">Salvar orçamento</button>
+  </section>
+  <section class="panel"><h3>Controle de orçamentos</h3><div id="budgetList"></div></section>
+</section>
+
+<section id="subscriptions" class="page">
+  <section class="panel premium"><h3>Assinaturas</h3><div class="alert">Controle Netflix, Spotify, internet, academia e contas fixas.</div></section>
+  <section class="panel">
+    <input id="subName" placeholder="Nome da assinatura">
+    <input id="subValue" type="number" placeholder="Valor mensal">
+    <select id="subCategory"></select>
+    <input id="subDue" type="number" placeholder="Dia de vencimento">
+    <button id="addSubBtn" class="primary">Adicionar assinatura</button>
+  </section>
+  <section class="panel"><h3>Minhas assinaturas</h3><div id="subList"></div></section>
+</section>
+
+<section id="planning" class="page">
+  <section class="panel premium"><h3>Planejamento mensal</h3><div class="alert">Organize prioridades e tarefas financeiras do mês.</div></section>
+  <section class="panel">
+    <input id="planTitle" placeholder="Ex: guardar dinheiro, pagar conta, evitar cartão">
+    <select id="planPriority"><option>Alta</option><option>Média</option><option>Baixa</option></select>
+    <button id="addPlanBtn" class="primary">Adicionar ao plano</button>
+  </section>
+  <section class="panel"><h3>Meu plano</h3><div id="planList"></div></section>
+</section>
+
+<section id="categories" class="page">
+  <section class="panel premium"><h3>Categorias personalizadas</h3><div class="alert">Crie categorias extras para organizar melhor seus lançamentos.</div></section>
+  <section class="panel">
+    <input id="newCategory" placeholder="Nova categoria">
+    <button id="addCategoryBtn" class="primary">Adicionar categoria</button>
+  </section>
+  <section class="panel"><h3>Categorias</h3><div id="customCategoryList"></div></section>
+</section>
 
 <section id="calendar" class="page"><section class="panel"><h3>Calendário financeiro</h3><div id="calendarList"></div></section></section>
-<section id="goals" class="page"><section class="panel"><h3>Meta financeira</h3><input id="goalName" placeholder="Nome"><input id="goalTarget" type="number" placeholder="Valor alvo"><input id="goalSaved" type="number" placeholder="Guardado"><button id="addGoal" class="primary">Criar meta</button></section><section class="panel"><h3>Simulador de meta</h3><input id="monthlySave" type="number" placeholder="Guardar por mês"><button id="simulateGoal">Simular</button><p id="goalSim"></p></section><section class="panel"><h3>Metas</h3><div id="goalList"></div></section></section>
-<section id="investments" class="page"><section class="panel"><h3>Investimento</h3><input id="investName" placeholder="Ex: CDB, Tesouro, Bitcoin"><input id="investAmount" type="number" placeholder="Valor atual"><input id="investRate" type="number" placeholder="% ao mês"><button id="addInvest" class="primary">Adicionar investimento</button></section><section class="panel"><h3>Simulador de patrimônio</h3><input id="wealthYears" type="number" placeholder="Anos"><input id="wealthMonthly" type="number" placeholder="Aporte mensal"><button id="simulateWealth">Simular patrimônio</button><p id="wealthSim"></p></section><section class="panel"><h3>Investimentos</h3><div id="investList"></div></section></section>
-<section id="assistant" class="page"><section class="panel"><h3>Finance AI 3.0</h3><button id="generatePlan" class="primary">Gerar relatório inteligente AI</button><div id="plan"></div></section><section class="panel"><h3>Checklist de saúde financeira</h3><div id="checklist"></div></section></section>
-<section id="reports" class="page"><section class="panel actions"><button id="sample" class="primary">Inserir dados exemplo</button><button id="exportCsv">Exportar CSV</button><button id="backup">Backup JSON</button><label class="file">Restaurar JSON<input id="restore" type="file" accept="application/json"></label><button id="printBtn">PDF / Imprimir</button><button id="resetCache">Forçar atualização local</button><button id="clear" class="danger">Limpar tudo</button></section><section class="panel"><h3>Resumo mensal</h3><div id="summary"></div></section></section>
 
-<nav class="bottom"><button class="tab active" data-page="dashboard">🏠<span>Início</span></button><button class="tab" data-page="launch">➕<span>Lançar</span></button><button class="tab" data-page="wallets">💼<span>Contas</span></button><button class="tab" data-page="cardsPage">💳<span>Cartões</span></button><button class="tab" data-page="assistant">🤖<span>IA</span></button><button class="tab" data-page="reports">📄<span>Mais</span></button></nav>
-<button id="menuBtn" class="fab">☰</button><section id="sheet" class="sheet hidden"><button class="sheet-link" data-page="calendar">📅 Calendário</button><button class="sheet-link" data-page="goals">🎯 Metas</button><button class="sheet-link" data-page="investments">📈 Investimentos</button><button class="sheet-link" data-page="reports">📄 Relatórios</button></section>
+<section id="goals" class="page">
+  <section class="panel">
+    <h3>Meta financeira</h3>
+    <input id="goalName" placeholder="Nome">
+    <input id="goalTarget" type="number" placeholder="Valor alvo">
+    <input id="goalSaved" type="number" placeholder="Guardado">
+    <button id="addGoalBtn" class="primary">Criar meta</button>
+  </section>
+  <section class="panel">
+    <h3>Simulador de meta</h3>
+    <input id="monthlySave" type="number" placeholder="Guardar por mês">
+    <button id="simulateGoalBtn">Simular</button>
+    <p id="goalSimulation"></p>
+  </section>
+  <section class="panel"><h3>Metas</h3><div id="goalList"></div></section>
+</section>
+
+<section id="investments" class="page">
+  <section class="panel">
+    <h3>Investimento</h3>
+    <input id="investName" placeholder="Ex: CDB, Tesouro, Bitcoin">
+    <input id="investAmount" type="number" placeholder="Valor atual">
+    <input id="investRate" type="number" placeholder="% ao mês">
+    <button id="addInvestBtn" class="primary">Adicionar investimento</button>
+  </section>
+  <section class="panel">
+    <h3>Simulador de patrimônio</h3>
+    <input id="wealthYears" type="number" placeholder="Anos">
+    <input id="wealthMonthly" type="number" placeholder="Aporte mensal">
+    <button id="simulateWealthBtn">Simular patrimônio</button>
+    <p id="wealthSimulation"></p>
+  </section>
+  <section class="panel"><h3>Investimentos</h3><div id="investList"></div></section>
+</section>
+
+<section id="assistant" class="page">
+  <section class="panel">
+    <h3>Finance AI</h3>
+    <button id="generateReportBtn" class="primary">Gerar relatório inteligente</button>
+    <div id="aiReport"></div>
+  </section>
+  <section class="panel"><h3>Checklist de saúde financeira</h3><div id="checklist"></div></section>
+</section>
+
+<section id="cloud" class="page">
+  <section class="panel premium"><h3>Cloud Prep</h3><div class="alert">Preparado para Firebase futuramente. Nesta versão, tudo continua local e estável.</div></section>
+  <section class="panel">
+    <h3>Perfil local</h3>
+    <input id="profileName" placeholder="Seu nome">
+    <button id="saveProfileBtn" class="primary">Salvar perfil local</button>
+    <div id="profileBox"></div>
+  </section>
+  <section class="panel"><h3>Status</h3><div id="cloudStatus"></div></section>
+</section>
+
+<section id="reports" class="page">
+  <section class="panel actions">
+    <button id="sampleBtn" class="primary">Inserir dados exemplo</button>
+    <button id="exportCsvBtn">Exportar CSV</button>
+    <button id="backupBtn">Backup JSON</button>
+    <label class="file">Restaurar JSON<input id="restoreInput" type="file" accept="application/json"></label>
+    <button id="printBtn">PDF / Imprimir</button>
+    <button id="clearBtn" class="danger">Limpar tudo</button>
+  </section>
+  <section class="panel"><h3>Resumo mensal</h3><div id="summary"></div></section>
+</section>
+
+<nav class="bottom">
+  <button class="tab active" data-page="dashboard">🏠<span>Início</span></button>
+  <button class="tab" data-page="launch">➕<span>Lançar</span></button>
+  <button class="tab" data-page="wallets">💼<span>Contas</span></button>
+  <button class="tab" data-page="cardsPage">💳<span>Cartões</span></button>
+  <button class="tab" data-page="assistant">🤖<span>IA</span></button>
+  <button class="tab" data-page="reports">📄<span>Mais</span></button>
+</nav>
+
+<button id="menuBtn" class="fab">☰</button>
+<section id="sheet" class="sheet hidden">
+  <button class="sheet-link" data-page="budgets">📊 Orçamentos</button>
+  <button class="sheet-link" data-page="subscriptions">🔁 Assinaturas</button>
+  <button class="sheet-link" data-page="planning">🧭 Planejamento</button>
+  <button class="sheet-link" data-page="categories">🏷️ Categorias</button>
+  <button class="sheet-link" data-page="calendar">📅 Calendário</button>
+  <button class="sheet-link" data-page="goals">🎯 Metas</button>
+  <button class="sheet-link" data-page="investments">📈 Investimentos</button>
+  <button class="sheet-link" data-page="cloud">☁️ Cloud Prep</button>
+</section>
 </main>
-<script src="./app-v16-ai.js?v=16ai"></script>
-</body></html>
+
+<script src="./app-v16-5-stable.js?v=165stable"></script>
+</body>
+</html>

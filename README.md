@@ -1,20 +1,39 @@
-# R💰 Ramalho Finance V16 Ultimate AI Edition
+# R💰 Ramalho Finance V16.5 Ultimate Stable
 
-Padrão NO CACHE ROOT, pronto para GitHub Pages pelo celular.
+Versão grande e cuidadosa baseada na V16 Ultimate, sem repetir os erros da V17.6.
 
-Suba estes arquivos na raiz:
+## Padrão
+- NO CACHE ROOT
+- Sem React
+- Sem npm
+- Sem service worker
+- Um único JS estável
+- Eventos diretos e delegação segura
+- Compatível com GitHub Pages pelo celular
+
+## Arquivos na raiz
 - index.html
 - style.css
-- app-v16-ai.js
+- app-v16-5-stable.js
 - manifest.json
 - .nojekyll
 - assets/icon.svg
 
-Abra com: ?v=16ai
+Abra com:
+?v=165stable
 
-Novidades:
-- Finance AI 3.0
-- Previsão inteligente
-- Maiores gastos
-- Filtros por tipo e categoria
-- Diagnóstico mais completo
+## Recursos
+- Dashboard executivo
+- Finance AI
+- Lançamentos com filtros
+- Carteiras e transferências
+- Cartões e parcelamentos
+- Orçamentos por categoria
+- Assinaturas
+- Planejamento mensal
+- Categorias personalizadas
+- Calendário financeiro
+- Metas
+- Investimentos
+- Cloud Prep local
+- CSV e Backup JSON
