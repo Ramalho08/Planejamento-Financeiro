@@ -1,15 +1,10 @@
 {
-  "name": "Ramalho Finance Ultimate V8",
-  "short_name": "R💰 Finance",
+  "name": "Ramalho Finance Enterprise",
+  "short_name": "R\ud83d\udcb0 Finance",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
-  "icons": [
-    {
-      "src": "assets/icon.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml"
-    }
-  ]
+  "description": "Aplicativo financeiro pessoal profissional.",
+  "icons": []
 }
