@@ -218,3 +218,9 @@ body.light .learning-pill{background:rgba(248,251,255,.78)}
 .ai20-tag{display:inline-block;margin:3px;padding:5px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--cyan);background:rgba(56,189,248,.08)}
 body.light .ai20-tag{background:rgba(248,251,255,.78)}
 @media(min-width:900px){.ai20-grid{grid-template-columns:1fr 2.1fr .8fr .8fr 1fr auto}}
+
+/* V21 Cloud AI */
+.cloud-user{display:flex;gap:10px;align-items:center;border:1px solid var(--border);border-radius:16px;padding:10px;background:rgba(15,23,42,.45);margin-top:10px}
+.cloud-user img{width:42px;height:42px;border-radius:50%}
+.cloud-result pre{white-space:pre-wrap;word-break:break-word}
+body.light .cloud-user{background:rgba(248,251,255,.78)}

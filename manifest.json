@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V20 Professional AI Engine",
+  "name": "Ramalho Finance V21 Cloud AI Starter",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=20proai",
+  "start_url": "./index.html?v=21cloudai",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",

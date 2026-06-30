@@ -1,14 +1,14 @@
-// R💰 Ramalho Finance V17 Cloud Prep
-// Este arquivo é seguro para GitHub Pages.
-// Na V18/V19 vamos preencher esses dados com o Firebase real.
-
-window.RF_FIREBASE_ENABLED = false;
+// V21 Cloud AI - Firebase config
+// Cole aqui as configurações do seu projeto Firebase.
+// Firebase Console > Project settings > Your apps > Web app.
 
 window.RF_FIREBASE_CONFIG = {
   apiKey: "COLE_AQUI",
-  authDomain: "COLE_AQUI",
-  projectId: "COLE_AQUI",
-  storageBucket: "COLE_AQUI",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJETO",
+  storageBucket: "SEU_PROJETO.appspot.com",
   messagingSenderId: "COLE_AQUI",
   appId: "COLE_AQUI"
 };
+
+window.RF_FUNCTION_REGION = "us-central1";

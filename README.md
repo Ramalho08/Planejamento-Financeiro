@@ -1,27 +1,30 @@
-# R💰 Ramalho Finance V20 Professional AI Engine
+# R💰 Ramalho Finance V21 Cloud AI Starter
 
-Refatoração completa da IA de importação, mantendo a base limpa do app.
+Esta versão inicia a fase Firebase + IA real.
 
-## Arquivos na raiz
+## Frontend
 - index.html
 - style.css
-- app-v20-professional-ai-engine.js
-- manifest.json
-- .nojekyll
-- assets/icon.svg
+- app-v21-cloud-ai.js
+- firebase-config.js
+- cloud-ai-client.js
 
-Abra com:
-?v=20proai
+## Backend
+- functions/index.js
+- functions/package.json
+- functions/.env.example
 
-## IA refeita
-- Motor separado AI20
-- Detecção automática de banco
-- Perfis Nubank, Inter, Itaú, Santander, Bradesco, Banco do Brasil, Caixa e genérico
-- Normalização profissional de valores
-- Classificação receita/despesa
-- Categorização automática
-- Aprendizado local por correção
-- Detecção de duplicidade
-- Níveis: Seguro, Revisar, Duplicado/Crítico
-- Só importa itens aprovados
-- Mantém estrutura limpa e funcional
+## Config
+- firebase.json
+- .firebaserc.example
+- GUIA_V21_CLOUD_AI.md
+
+## Abra com
+
+?v=21cloudai
+
+## Necessário configurar
+1. Firebase Authentication com Google.
+2. firebase-config.js.
+3. Cloud Functions.
+4. OPENAI_API_KEY no backend.
