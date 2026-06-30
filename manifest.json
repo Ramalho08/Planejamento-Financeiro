@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V17.4 Infinity Elite",
+  "name": "Ramalho Finance V17.4.1 FIX Elite",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=174elite",
+  "start_url": "./index.html?v=1741fix",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",

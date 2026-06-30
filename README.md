@@ -1,23 +1,30 @@
-# R💰 Ramalho Finance V17.4 Infinity Elite
+# R💰 Ramalho Finance V17.4.1 FIX Elite
 
-Baseada na V17.3 Infinity Edition.
+Correção da V17.4 onde os botões/abas pararam.
+
+## Base
+- Baseada na V17.3 Infinity Edition
+- JavaScript checado com `node --check`
+- Sem Firebase
+- Sem service worker
+- NO CACHE ROOT
 
 ## Arquivos na raiz
 - index.html
 - style.css
-- app-v17-4-elite.js
+- app-v17-4-1-fix.js
 - manifest.json
 - .nojekyll
 - assets/icon.svg
 
 Abra com:
-?v=174elite
+?v=1741fix
 
-## Novidades
-- Finance AI 4.0 Elite
-- Pesquisa Global
+## Correções
+- Corrigido erro de JavaScript herdado em Favoritos
+- Navegação das abas preservada
+- Pesquisa Global adicionada com segurança
 - Centro de Patrimônio
-- Contas futuras
+- Contas Futuras
 - Cartões Elite
 - AI Coach
-- Previsões 30, 90 e 365 dias
