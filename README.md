@@ -1,21 +1,21 @@
-# R💰 Ramalho Finance V17.6 SAFE Plus
+# R💰 Ramalho Finance V17.7 SAFE Pro
 
-Baseada na V17.5.1 SAFE, mantendo o núcleo estável.
+Baseada na V17.6 SAFE Plus, preservando o núcleo estável.
 
 ## Arquivos na raiz
 - index.html
 - style.css
-- app-v17-6-safe-plus.js
+- app-v17-7-safe-pro.js
 - manifest.json
 - .nojekyll
 - assets/icon.svg
 
 Abra com:
-?v=176safeplus
+?v=177safepro
 
 ## Novidades
-- SAFE Plus no dashboard
-- Metas rápidas SAFE
-- Notas financeiras
-- Exportação SAFE preservada
+- SAFE Pro no dashboard
+- Rotina Financeira SAFE
+- Lista de desejos
+- Hábitos financeiros
 - JavaScript checado com node --check
