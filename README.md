@@ -1,23 +1,25 @@
-# R💰 Ramalho Finance V17.5 Elite Max
+# R💰 Ramalho Finance V17.5.1 SAFE
 
-Baseada na V17.4.1 FIX Elite, com JavaScript checado.
+Correção para o problema de abas/botões da V17.5.
+
+## Base
+- Recriada a partir da base corrigida V17.4.1 FIX
+- Sem mexer no núcleo da navegação
+- JavaScript checado com node --check
+- NO CACHE ROOT
+- Sem Firebase
+- Sem service worker
 
 ## Arquivos na raiz
 - index.html
 - style.css
-- app-v17-5-elite-max.js
+- app-v17-5-1-safe.js
 - manifest.json
 - .nojekyll
 - assets/icon.svg
 
 Abra com:
-?v=175max
+?v=1751safe
 
-## Novidades
-- Max Control
-- Impostos e taxas
-- Fontes de renda
-- Central de Exportação
-- Relatório HTML
-- Copiar resumo financeiro
-- Score Max
+## Objetivo
+Voltar a estabilidade das abas e botões antes de adicionar novas funções pesadas.
