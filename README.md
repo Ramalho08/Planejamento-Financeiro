@@ -1,27 +1,25 @@
-# R💰 Ramalho Finance V18.1 Ultimate Rebuild Full
+# R💰 Ramalho Finance V18.2 Full Legacy Restore
 
-Corrige a V18 que ficou simplificada demais, restaurando funções premium da V17 em uma base limpa.
+Restaura mais funcionalidades favoritas da V17 dentro da base limpa da V18.
 
 ## Arquivos na raiz
 - index.html
 - style.css
-- app-v18-1-full.js
+- app-v18-2-restore.js
 - manifest.json
 - .nojekyll
 - assets/icon.svg
 
 Abra com:
-?v=181full
+?v=182restore
 
-## Restaurado da V17
-- Assinaturas
-- Analytics Premium
-- Timeline financeira
-- Ranking de categorias
-- Favoritos
-- Atalhos rápidos
-- Ações recentes
-- SAFE Tools
-- Pesquisa Global
-- Infinity Stats
-- Centro Premium
+## Restaurado
+- Fontes de renda
+- Taxas/impostos
+- Contas futuras
+- Cartões Elite
+- Metas Pro
+- SAFE Life: metas rápidas, desejos e hábitos
+- AI Coach
+- Central de Exportação
+- Legacy Restore Panel

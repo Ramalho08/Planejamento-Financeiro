@@ -63,3 +63,8 @@ body.light .top,body.light .bottom{background:rgba(255,255,255,.92)}
 .note-card{border-left:3px solid var(--cyan);padding-left:12px}
 .favorite-btn{width:100%;margin:6px 0;text-align:left}
 @media(min-width:900px){.mini-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* V18.2 Restore */
+.restore-card{border-color:rgba(250,204,21,.42)!important;background:linear-gradient(135deg,rgba(250,204,21,.10),rgba(34,211,238,.08),rgba(15,23,42,.55))!important}
+.habit-done{opacity:.72;text-decoration:line-through}
+.copy-ok{color:var(--green);font-weight:800}
