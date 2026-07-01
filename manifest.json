@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V21.6 Monthly Close",
+  "name": "Ramalho Finance V21.6.1 Monthly Close Button FIX",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=216monthlyclose",
+  "start_url": "./index.html?v=2161monthlyfix",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",

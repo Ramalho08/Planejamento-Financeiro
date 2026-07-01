@@ -1,14 +1,12 @@
-# R💰 Ramalho Finance V21.6 Monthly Close
+# R💰 Ramalho Finance V21.6.1 Monthly Close Button FIX
 
-Atualização segura baseada na V21.5.1.
+Correção da V21.6 onde os botões pararam.
 
-## Novidade
-- Fechamento Mensal
-- Resumo de receitas, despesas, saldo e economia
-- Maiores gastos do mês
-- Gastos por categoria
-- Copiar fechamento
-- Exportar fechamento em TXT
+## Base
+- Feita a partir da V21.5.1 funcional.
+- Fechamento Mensal adicionado de forma isolada.
+- Não altera o render principal.
+- Não altera o núcleo dos botões/abas.
 
 ## Abra com
-?v=216monthlyclose
+?v=2161monthlyfix
