@@ -1,14 +1,12 @@
-# R💰 Ramalho Finance V21.5 Smart Review
+# R💰 Ramalho Finance V21.5.1 Smart Review Button FIX
 
-Atualização segura baseada na V21.4.1.
+Correção da V21.5 onde botões pararam de funcionar.
 
-## Novidade
-- Central de Revisão Inteligente
-- Detecta valores altos
-- Detecta categoria "Outros"
-- Detecta possíveis duplicados
-- Detecta gastos fora do padrão
-- Não mexe no núcleo das páginas
+## Base
+- Refeita a partir da V21.4.1 Rebind FIX funcional.
+- Reaplicada a Central de Revisão Inteligente.
+- Reforço nos eventos das abas e botões.
+- Não mexe no núcleo principal do app.
 
 ## Abra com
-?v=215smartreview
+?v=2151buttonfix

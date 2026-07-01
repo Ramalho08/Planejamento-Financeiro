@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V21.5 Smart Review",
+  "name": "Ramalho Finance V21.5.1 Smart Review Button FIX",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=215smartreview",
+  "start_url": "./index.html?v=2151buttonfix",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
