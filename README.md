@@ -1,15 +1,14 @@
-# R💰 Ramalho Finance V21.3 Stable Clean FIX
+# R💰 Ramalho Finance V21.4 Stable Plus
 
-Versão feita para corrigir quebras causadas por remendos anteriores.
+Atualização incremental segura baseada na V21.3 Stable Clean FIX.
 
-## O que foi feito
-- Voltou para base estável.
-- Removeu blocos conflitantes de menu.
-- Recriou o menu dos 3 pontos como drawer lateral simples.
-- Menu tem rolagem real.
-- IA local foi isolada e simplificada para não quebrar páginas.
-- Cloud continua isolado.
-- Cache busting novo.
+## Novidades
+- Nova tela Stable Plus
+- Painel de status do sistema
+- Backup rápido JSON
+- Botão para limpar cache e recarregar versão
+- Próximo passo recomendado para Firebase
+- Mantém menu, abas e Cloud isolado estáveis
 
 ## Abra com
-?v=213stableclean
+?v=214stableplus

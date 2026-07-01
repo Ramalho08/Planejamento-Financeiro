@@ -359,3 +359,23 @@ body.light .sheet-header{background:rgba(248,251,255,.98)}
     border-radius:18px 0 0 18px!important;
   }
 }
+
+/* V21.4 Stable Plus */
+.stable-kpi{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.stable-kpi .alert{margin:0}
+.stable-pill{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--cyan);
+  font-size:12px;
+  margin:3px;
+}
+@media(min-width:900px){
+  .stable-kpi{grid-template-columns:repeat(4,1fr)}
+}

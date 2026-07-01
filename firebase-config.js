@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-const KEY='rf_v21_3_stable_clean';
+const KEY='rf_v21_4_stable_plus';
 const categoriesBase=['Alimentação','Transporte','Moradia','Educação','Saúde','Lazer','Cartão','Investimentos','Pix','Assinaturas','Salário','Outros'];
 const defaultState={tx:[],wallets:[],cards:[],budgets:[],goals:[],investments:[],plan:[],assets:[],debts:[],subscriptions:[],favorites:[],recentActions:[],safeNotes:[],safeRoutine:[],incomeSources:[],taxes:[],goalPro:[],safeGoals:[],safeWishlist:[],safeHabits:[],customCategories:[],extractDraft:[],categoryLearning:{},lastImportSummary:null,profileName:'Guilherme',theme:'dark',sortTx:false};
 
@@ -137,7 +137,7 @@ on('copySummaryBtn','click',copySummary);
 
 on('sampleBtn','click',()=>{insertSample();save();});
 on('exportCsvBtn','click',exportCsv);
-on('backupBtn','click',()=>download('ramalho-finance-v21-3-stable-clean-backup.json',JSON.stringify(state,null,2),'application/json'));
+on('backupBtn','click',()=>download('ramalho-finance-v21-4-stable-plus-backup.json',JSON.stringify(state,null,2),'application/json'));
 on('restoreInput','change',e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();}catch(err){alert('Backup inválido.');}};r.readAsText(file);});
 on('printBtn','click',()=>print());
 on('clearBtn','click',()=>{if(confirm('Apagar todos os dados?')){localStorage.removeItem(KEY);location.reload();}});
@@ -172,7 +172,7 @@ function render(){
   $('mainInsight').textContent=mainInsight(t,score);
 
   renderAI(t,score,saving,cardPct); renderInfinityStats(t,score); renderPremiumCenter(t,score); renderBars(t); renderCategoryBars(); renderAlerts(t,saving,cardPct);
-  renderProfessionalAI(t,score,saving,cardPct); renderSmartForecast(t); renderAIProfessionalPage(t,score,saving,cardPct); renderTransactions(); renderWallets(); renderCards(); renderCardElite(); renderBudgets(); renderSubscriptions(); renderIncomeSources(); renderTaxes(); renderFutureBills(); renderGoals(); renderGoalPro(); renderInvestments(); renderPlanning(); renderAssetsDebts(); renderAnalytics(); renderFavorites(); renderRecentActions(); renderSafeTools(); renderSafeLife(); renderRestorePanel(t,score); renderCoachPlan(t,score); renderExportSummary(); renderGlobalSearch(); renderExtractReader(); renderMonthlySummary(); renderCloud();rf213BindMenu();rf213StableAI();rebindNavigationButtons();initSafeCloudButtons();rebindNavigationButtons();
+  renderProfessionalAI(t,score,saving,cardPct); renderSmartForecast(t); renderAIProfessionalPage(t,score,saving,cardPct); renderTransactions(); renderWallets(); renderCards(); renderCardElite(); renderBudgets(); renderSubscriptions(); renderIncomeSources(); renderTaxes(); renderFutureBills(); renderGoals(); renderGoalPro(); renderInvestments(); renderPlanning(); renderAssetsDebts(); renderAnalytics(); renderFavorites(); renderRecentActions(); renderSafeTools(); renderSafeLife(); renderRestorePanel(t,score); renderCoachPlan(t,score); renderExportSummary(); renderGlobalSearch(); renderExtractReader(); renderMonthlySummary(); renderCloud();rf213BindMenu();rf213StableAI();renderStablePlus();initStablePlusButtons();rebindNavigationButtons();initSafeCloudButtons();rebindNavigationButtons();
 }
 function setText(id,v){const el=$(id);if(el)el.textContent=v;}
 function greeting(){const h=new Date().getHours();return h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';}
@@ -723,7 +723,7 @@ function initSafeCloudButtons(){
   if(send&&!send.dataset.ready){send.dataset.ready='1';send.addEventListener('click',function(){const box=$('cloudAiResult');if(box)box.innerHTML='<div class="alert safe-cloud-warn">Cloud AI preparada, mas isolada para não quebrar o app. Configure o Firebase e depois ativamos a integração real.</div>';});}
 }
 
-function exportCsv(){const rows=['Mes,Data,Tipo,Categoria,Descricao,Valor'];state.tx.forEach(t=>rows.push([t.month,t.date,t.type,t.category,'"'+t.description+'"',t.amount].join(',')));download('ramalho-finance-v21-3-stable-clean.csv',rows.join('\n'),'text/csv');}
+function exportCsv(){const rows=['Mes,Data,Tipo,Categoria,Descricao,Valor'];state.tx.forEach(t=>rows.push([t.month,t.date,t.type,t.category,'"'+t.description+'"',t.amount].join(',')));download('ramalho-finance-v21-4-stable-plus.csv',rows.join('\n'),'text/csv');}
 function download(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();}
 function insertSample(){
   state.wallets=[{id:id(),name:'Nubank',balance:1200},{id:id(),name:'Dinheiro',balance:150}];
@@ -1022,6 +1022,48 @@ function rf213StableAI(){
 }
 document.addEventListener('DOMContentLoaded',function(){rf213BindMenu();setTimeout(rf213StableAI,50);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')rf213CloseMenu();});
+
+
+// V21.4 STABLE PLUS
+function renderStablePlus(){
+  const status=$('stableSystemStatus'), next=$('nextStepBox');
+  if(status){
+    const txCount=(state.tx||[]).length;
+    const walletCount=(state.wallets||[]).length;
+    const goalCount=(state.goals||[]).length+(state.goalPro||[]).length;
+    const localSize=JSON.stringify(state||{}).length;
+    status.innerHTML='<div class="stable-kpi">'+
+      '<div class="alert"><b>Lançamentos</b><p>'+txCount+'</p></div>'+
+      '<div class="alert"><b>Carteiras</b><p>'+walletCount+'</p></div>'+
+      '<div class="alert"><b>Metas</b><p>'+goalCount+'</p></div>'+
+      '<div class="alert"><b>Dados locais</b><p>'+Math.round(localSize/1024)+' KB</p></div>'+
+    '</div><div class="alert"><span class="stable-pill">Menu estável</span><span class="stable-pill">Cloud isolado</span><span class="stable-pill">IA local segura</span><span class="stable-pill">GitHub Pages OK</span></div>';
+  }
+  if(next){
+    next.innerHTML='<div class="alert"><b>Recomendação:</b><p>Manter esta base estável e só ativar Firebase/Login Google depois que os dados reais do projeto Firebase estiverem configurados.</p></div><div class="alert"><b>Próxima versão segura:</b><p>V21.5 pode adicionar uma tela de configuração guiada do Firebase, sem ativar scripts externos automaticamente.</p></div>';
+  }
+}
+function initStablePlusButtons(){
+  const clean=$('stableCleanCacheBtn');
+  if(clean&&!clean.dataset.ready){
+    clean.dataset.ready='1';
+    clean.addEventListener('click',function(){
+      try{
+        if(window.caches){caches.keys().then(function(keys){keys.forEach(function(k){caches.delete(k);});});}
+        if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});}
+      }catch(e){console.warn(e);}
+      location.replace(location.href.split('?')[0]+'?v=214stableplus&t='+Date.now());
+    });
+  }
+  const backup=$('stableBackupBtn');
+  if(backup&&!backup.dataset.ready){
+    backup.dataset.ready='1';
+    backup.addEventListener('click',function(){
+      download('ramalho-finance-v21-4-stable-plus-backup.json',JSON.stringify(state,null,2),'application/json');
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){renderStablePlus();initStablePlusButtons();},100);});
 
 try{render();}catch(err){console.error(err);alert('Erro ao iniciar: '+err.message);}
 if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));}

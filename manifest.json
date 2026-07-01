@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V21.3 Stable Clean FIX",
+  "name": "Ramalho Finance V21.4 Stable Plus",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=213stableclean",
+  "start_url": "./index.html?v=214stableplus",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
