@@ -1,24 +1,13 @@
-# R💰 Ramalho Finance Legacy Pro Alpha Navigation Pro FIX
+# R💰 Ramalho Finance Legacy Pro Alpha Bundle Pro FIX
 
-Correção profissional da navegação da Legacy Pro Alpha.
+Correção profissional para estabilidade no GitHub Pages e celular.
 
-## O que foi reformulado
+## Mudança principal
 
-- Sistema de rotas centralizado.
-- Abas inferiores com estado ativo confiável.
-- Menu lateral com estado ativo confiável.
-- Fallback se uma página falhar.
-- Suporte a hash: `#dashboard`, `#reports`, etc.
-- Memória da última página aberta.
-- Tratamento de erro visual.
-- Validação de rotas no carregamento.
-- Menu lateral com rolagem e fechamento seguro.
+A arquitetura visual/profissional foi mantida, mas o JavaScript agora está em **um bundle único `app.js`**, organizado internamente por módulos.
+
+Isso evita falhas de carregamento com `type="module"` e melhora a estabilidade dos botões/abas.
 
 ## Abra com
 
-`?v=navprofix`
-
-## Importante
-
-A pegada visual e a arquitetura da Legacy Pro Alpha foram mantidas.
-A correção foi focada em botões, abas e navegação profissional.
+?v=bundleprofix
