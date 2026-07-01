@@ -1,12 +1,14 @@
-# R💰 Ramalho Finance V21.5.1 Smart Review Button FIX
+# R💰 Ramalho Finance V21.6 Monthly Close
 
-Correção da V21.5 onde botões pararam de funcionar.
+Atualização segura baseada na V21.5.1.
 
-## Base
-- Refeita a partir da V21.4.1 Rebind FIX funcional.
-- Reaplicada a Central de Revisão Inteligente.
-- Reforço nos eventos das abas e botões.
-- Não mexe no núcleo principal do app.
+## Novidade
+- Fechamento Mensal
+- Resumo de receitas, despesas, saldo e economia
+- Maiores gastos do mês
+- Gastos por categoria
+- Copiar fechamento
+- Exportar fechamento em TXT
 
 ## Abra com
-?v=2151buttonfix
+?v=216monthlyclose

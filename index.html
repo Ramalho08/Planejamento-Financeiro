@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#050816">
-<title>R💰 Ramalho Finance V21.5.1 Smart Review Button FIX</title>
-<link rel="manifest" href="./manifest.json?v=2151buttonfix">
-<link rel="stylesheet" href="./style.css?v=2151buttonfix">
+<title>R💰 Ramalho Finance V21.6 Monthly Close</title>
+<link rel="manifest" href="./manifest.json?v=216monthlyclose">
+<link rel="stylesheet" href="./style.css?v=216monthlyclose">
 </head>
 <body>
 <div class="bg"></div>
 <header class="top">
   <div>
     <strong>R💰 Ramalho Finance</strong>
-    <small>V21.5.1 Smart Review Button FIX — NO CACHE ROOT</small>
+    <small>V21.6 Monthly Close — NO CACHE ROOT</small>
   </div>
   <button id="themeBtn">Tema</button>
 </header>
@@ -24,7 +24,7 @@
       <span class="badge">V19 Ultimate AI Import</span>
       <p id="greeting">Olá</p>
       <h1 id="netWorth">R$ 0,00</h1>
-      <p id="mainInsight">Smart Review Button FIX com botões preservados.</p>
+      <p id="mainInsight">Monthly Close com fechamento financeiro mensal.</p>
       <div class="score-grid">
         <div><b id="score">0</b><small>Score</small></div>
         <div><b id="savingRate">0%</b><small>Economia</small></div>
@@ -430,6 +430,34 @@
   </section>
 </section>
 
+
+<section id="monthlyClose" class="page">
+  <section class="panel premium">
+    <h2>Fechamento Mensal</h2>
+    <div class="alert">Resumo profissional do mês atual com receitas, despesas, saldo, maiores gastos e relatório exportável.</div>
+  </section>
+
+  <section class="panel">
+    <h2>Resumo do mês</h2>
+    <div id="monthlyCloseSummary"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Maiores gastos</h2>
+    <div id="monthlyCloseTopExpenses"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Categorias do mês</h2>
+    <div id="monthlyCloseCategories"></div>
+  </section>
+
+  <section class="panel actions">
+    <button id="copyMonthlyCloseBtn" class="primary">Copiar fechamento</button>
+    <button id="exportMonthlyCloseBtn">Exportar fechamento TXT</button>
+  </section>
+</section>
+
 <section id="cloud" class="page">
   <section class="panel premium">
     <h2>V21.1 Safe Cloud AI</h2>
@@ -474,10 +502,10 @@
   <button class="sheet-link" data-page="investments">📈 Investimentos</button>
   <button class="sheet-link" data-page="planning">🧭 Planejamento</button>
   <button class="sheet-link" data-page="assets">💎 Patrimônio</button>
-  <button class="sheet-link" data-page="cloud">☁️ Cloud Prep</button><button class="sheet-link" data-page="stablePlus">🧩 Stable Plus</button><button class="sheet-link" data-page="smartReview">🔎 Revisão IA</button>
+  <button class="sheet-link" data-page="cloud">☁️ Cloud Prep</button><button class="sheet-link" data-page="stablePlus">🧩 Stable Plus</button><button class="sheet-link" data-page="smartReview">🔎 Revisão IA</button><button class="sheet-link" data-page="monthlyClose">📅 Fechamento</button>
 </section>
 
-<script src="./firebase-config.js?v=2151buttonfix"></script>
-<script src="./app-v21-5-1-smart-review-button-fix.js?v=2151buttonfix"></script>
+<script src="./firebase-config.js?v=216monthlyclose"></script>
+<script src="./app-v21-6-monthly-close.js?v=216monthlyclose"></script>
 </body>
 </html>
