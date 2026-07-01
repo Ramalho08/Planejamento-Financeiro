@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V21.4.1 Rebind FIX",
+  "name": "Ramalho Finance V21.5 Smart Review",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=2141rebindfix",
+  "start_url": "./index.html?v=215smartreview",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
