@@ -1,24 +1,15 @@
-# R💰 Ramalho Finance V21.2 Pro Menu + AI Local
+# R💰 Ramalho Finance V21.3 Stable Clean FIX
 
-Correção maior do menu dos 3 pontos e melhoria da IA local.
+Versão feita para corrigir quebras causadas por remendos anteriores.
 
-## Correções do menu
-- Menu dos 3 pontos virou menu lateral profissional.
-- Rolagem real em tela cheia.
-- Overlay para fechar tocando fora.
-- Botão Fechar.
-- Melhor compatibilidade com celular.
-
-## Melhorias de IA local
-- Score financeiro profissional.
-- Diagnóstico de risco.
-- Projeção de gastos.
-- Gasto diário médio.
-- Pressão de custos fixos.
-- Reserva em meses.
-- Maior categoria de gasto.
-- Detecção de gastos fora do padrão.
-- Plano de ação automático.
+## O que foi feito
+- Voltou para base estável.
+- Removeu blocos conflitantes de menu.
+- Recriou o menu dos 3 pontos como drawer lateral simples.
+- Menu tem rolagem real.
+- IA local foi isolada e simplificada para não quebrar páginas.
+- Cloud continua isolado.
+- Cache busting novo.
 
 ## Abra com
-?v=212promenuai
+?v=213stableclean
