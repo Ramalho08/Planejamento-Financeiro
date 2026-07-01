@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-const KEY='rf_v21_4_stable_plus';
+const KEY='rf_v21_4_1_rebind_fix';
 const categoriesBase=['Alimentação','Transporte','Moradia','Educação','Saúde','Lazer','Cartão','Investimentos','Pix','Assinaturas','Salário','Outros'];
 const defaultState={tx:[],wallets:[],cards:[],budgets:[],goals:[],investments:[],plan:[],assets:[],debts:[],subscriptions:[],favorites:[],recentActions:[],safeNotes:[],safeRoutine:[],incomeSources:[],taxes:[],goalPro:[],safeGoals:[],safeWishlist:[],safeHabits:[],customCategories:[],extractDraft:[],categoryLearning:{},lastImportSummary:null,profileName:'Guilherme',theme:'dark',sortTx:false};
 
@@ -137,7 +137,7 @@ on('copySummaryBtn','click',copySummary);
 
 on('sampleBtn','click',()=>{insertSample();save();});
 on('exportCsvBtn','click',exportCsv);
-on('backupBtn','click',()=>download('ramalho-finance-v21-4-stable-plus-backup.json',JSON.stringify(state,null,2),'application/json'));
+on('backupBtn','click',()=>download('ramalho-finance-v21-4-1-rebind-fix-backup.json',JSON.stringify(state,null,2),'application/json'));
 on('restoreInput','change',e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();}catch(err){alert('Backup inválido.');}};r.readAsText(file);});
 on('printBtn','click',()=>print());
 on('clearBtn','click',()=>{if(confirm('Apagar todos os dados?')){localStorage.removeItem(KEY);location.reload();}});
@@ -723,7 +723,7 @@ function initSafeCloudButtons(){
   if(send&&!send.dataset.ready){send.dataset.ready='1';send.addEventListener('click',function(){const box=$('cloudAiResult');if(box)box.innerHTML='<div class="alert safe-cloud-warn">Cloud AI preparada, mas isolada para não quebrar o app. Configure o Firebase e depois ativamos a integração real.</div>';});}
 }
 
-function exportCsv(){const rows=['Mes,Data,Tipo,Categoria,Descricao,Valor'];state.tx.forEach(t=>rows.push([t.month,t.date,t.type,t.category,'"'+t.description+'"',t.amount].join(',')));download('ramalho-finance-v21-4-stable-plus.csv',rows.join('\n'),'text/csv');}
+function exportCsv(){const rows=['Mes,Data,Tipo,Categoria,Descricao,Valor'];state.tx.forEach(t=>rows.push([t.month,t.date,t.type,t.category,'"'+t.description+'"',t.amount].join(',')));download('ramalho-finance-v21-4-1-rebind-fix.csv',rows.join('\n'),'text/csv');}
 function download(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();}
 function insertSample(){
   state.wallets=[{id:id(),name:'Nubank',balance:1200},{id:id(),name:'Dinheiro',balance:150}];
@@ -954,6 +954,19 @@ function importExtractDraft(){
 
 
 // V21.3 STABLE CLEAN FIX
+
+// V21.4.1 REBIND FIX
+function rebindNavigationButtons(){
+  document.querySelectorAll('[data-page]').forEach(function(btn){
+    if(btn.dataset.rf2141)return;
+    btn.dataset.rf2141='1';
+    btn.addEventListener('click',function(ev){
+      ev.preventDefault();
+      if(typeof setPage==='function')setPage(btn.dataset.page);
+    });
+  });
+}
+
 function rf213OpenMenu(){
   const sheet=$('sheet'), backdrop=$('sheetBackdrop');
   if(sheet){sheet.classList.remove('hidden');sheet.scrollTop=0;}
@@ -1052,14 +1065,14 @@ function initStablePlusButtons(){
         if(window.caches){caches.keys().then(function(keys){keys.forEach(function(k){caches.delete(k);});});}
         if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});}
       }catch(e){console.warn(e);}
-      location.replace(location.href.split('?')[0]+'?v=214stableplus&t='+Date.now());
+      location.replace(location.href.split('?')[0]+'?v=2141rebindfix&t='+Date.now());
     });
   }
   const backup=$('stableBackupBtn');
   if(backup&&!backup.dataset.ready){
     backup.dataset.ready='1';
     backup.addEventListener('click',function(){
-      download('ramalho-finance-v21-4-stable-plus-backup.json',JSON.stringify(state,null,2),'application/json');
+      download('ramalho-finance-v21-4-1-rebind-fix-backup.json',JSON.stringify(state,null,2),'application/json');
     });
   }
 }

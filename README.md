@@ -1,14 +1,14 @@
-# R💰 Ramalho Finance V21.4 Stable Plus
+# R💰 Ramalho Finance V21.4.1 Rebind FIX
 
-Atualização incremental segura baseada na V21.3 Stable Clean FIX.
+Correção do erro:
 
-## Novidades
-- Nova tela Stable Plus
-- Painel de status do sistema
-- Backup rápido JSON
-- Botão para limpar cache e recarregar versão
-- Próximo passo recomendado para Firebase
-- Mantém menu, abas e Cloud isolado estáveis
+`rebindNavigationButtons is not defined`
+
+## Correções
+- Adicionada função de compatibilidade `rebindNavigationButtons`.
+- Corrigido erro ao iniciar/recarregar o site.
+- Mantém a base V21.4 Stable Plus.
+- Novo cache busting: ?v=2141rebindfix
 
 ## Abra com
-?v=214stableplus
+?v=2141rebindfix

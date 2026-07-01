@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance V21.4 Stable Plus",
+  "name": "Ramalho Finance V21.4.1 Rebind FIX",
   "short_name": "R💰 Finance",
-  "start_url": "./index.html?v=214stableplus",
+  "start_url": "./index.html?v=2141rebindfix",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
