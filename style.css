@@ -226,3 +226,33 @@ body.light .ai20-tag{background:rgba(248,251,255,.78)}
 .safe-cloud-ok{border-color:rgba(34,197,94,.42)!important;background:rgba(34,197,94,.08)!important}
 .safe-cloud-warn{border-color:rgba(250,204,21,.45)!important;background:rgba(250,204,21,.08)!important}
 body.light .cloud-user{background:rgba(248,251,255,.78)}
+
+/* V21.1.1 Menu Scroll FIX */
+.sheet{
+  max-height: min(72vh, 560px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-bottom: 14px;
+}
+.sheet::-webkit-scrollbar{
+  width: 7px;
+}
+.sheet::-webkit-scrollbar-thumb{
+  background: linear-gradient(180deg, var(--cyan), var(--purple));
+  border-radius: 999px;
+}
+.sheet-link{
+  min-height: 44px;
+  flex-shrink: 0;
+}
+@media(max-width:520px){
+  .sheet{
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    bottom: 146px !important;
+    max-height: 58vh !important;
+  }
+}

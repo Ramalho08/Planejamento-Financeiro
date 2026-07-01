@@ -1,13 +1,12 @@
-# R💰 Ramalho Finance V21.1 Safe Cloud AI
+# R💰 Ramalho Finance V21.1.1 Menu Scroll FIX
 
-Correção da V21 que causou bug nas páginas.
+Correção da aba das três barras.
 
-## O que mudou
-- Base voltou para V20 estável.
-- Cloud AI ficou isolado.
-- Firebase não é carregado como módulo obrigatório.
-- Navegação/abas continuam independentes do Cloud.
-- Preparado para próxima etapa sem quebrar o app.
+## Correção
+- Menu lateral/inferior agora tem barra de rolagem.
+- Melhor compatibilidade com celular.
+- Mantém a base V21.1 Safe Cloud.
+- Não mexe no núcleo das abas/páginas.
 
 ## Abra com
-?v=211safecloud
+?v=2111scroll
