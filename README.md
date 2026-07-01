@@ -1,12 +1,12 @@
-# R💰 Ramalho Finance V21.6.1 Monthly Close Button FIX
+# R💰 Ramalho Finance V21.5.2 ROLLBACK STABLE
 
-Correção da V21.6 onde os botões pararam.
+Rollback para a última base funcional confirmada.
 
-## Base
-- Feita a partir da V21.5.1 funcional.
-- Fechamento Mensal adicionado de forma isolada.
-- Não altera o render principal.
-- Não altera o núcleo dos botões/abas.
+## Importante
+- Remove a tentativa de Fechamento Mensal da V21.6.
+- Mantém Smart Review.
+- Mantém correção dos botões da V21.5.1.
+- Novo cache busting: ?v=2152rollback
 
 ## Abra com
-?v=2161monthlyfix
+?v=2152rollback
