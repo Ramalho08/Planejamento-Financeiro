@@ -23,3 +23,30 @@
 .analytics-bar span{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed,#38bdf8);border-radius:999px}
 .analytics-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 @media(min-width:820px){.analytics-mini{grid-template-columns:repeat(4,1fr)}}
+
+
+/* Finance Intelligence */
+.fi-score{
+  font-size:34px;
+  font-weight:900;
+  color:var(--cyan);
+}
+.fi-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.fi-card{
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:12px;
+  background:linear-gradient(135deg,rgba(37,99,235,.12),rgba(124,58,237,.10));
+}
+.fi-card small{color:var(--muted)}
+.fi-card h3{margin:6px 0 0;font-size:24px}
+.fi-good{border-color:rgba(34,197,94,.42)!important;background:rgba(34,197,94,.08)!important}
+.fi-warn{border-color:rgba(250,204,21,.46)!important;background:rgba(250,204,21,.08)!important}
+.fi-bad{border-color:rgba(251,113,133,.48)!important;background:rgba(251,113,133,.10)!important}
+.fi-bar{height:10px;background:rgba(148,163,184,.22);border-radius:999px;overflow:hidden;margin-top:8px}
+.fi-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#7c3aed,#38bdf8)}
+@media(min-width:820px){.fi-grid{grid-template-columns:repeat(4,1fr)}}

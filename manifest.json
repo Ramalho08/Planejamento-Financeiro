@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance Legacy Pro Alpha Dashboard Pro Analytics",
+  "name": "Ramalho Finance Legacy Pro Alpha Finance Intelligence",
   "short_name": "Ramalho Finance",
-  "start_url": "./index.html?v=dashproanalytics",
+  "start_url": "./index.html?v=financeintelligence",
   "display": "standalone",
   "background_color": "#030817",
   "theme_color": "#07152f",

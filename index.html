@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07152f">
-  <title>Ramalho Finance Legacy Pro Alpha Dashboard Pro Analytics</title>
-  <link rel="manifest" href="./manifest.json?v=dashproanalytics">
-  <link rel="stylesheet" href="./style.css?v=dashproanalytics">
+  <title>Ramalho Finance Legacy Pro Alpha Finance Intelligence</title>
+  <link rel="manifest" href="./manifest.json?v=financeintelligence">
+  <link rel="stylesheet" href="./style.css?v=financeintelligence">
 </head>
 <body>
   <div class="bg"></div>
 
   <header class="top">
     <button id="menuBtn" class="icon" type="button">☰</button>
-    <div class="brand"><b>R💰 Ramalho Finance</b><small>Dashboard Pro Analytics</small></div>
+    <div class="brand"><b>R💰 Ramalho Finance</b><small>Finance Intelligence</small></div>
     <button id="themeBtn" class="icon" type="button">◐</button>
   </header>
 
@@ -29,7 +29,7 @@
       <button data-page="wallets" type="button">👛 Carteiras</button>
       <button data-page="goals" type="button">🎯 Metas</button>
       <button data-page="reports" type="button">📊 Relatórios</button>
-      <button data-page="ai" type="button">🧠 IA Local</button>
+      <button data-page="ai" type="button">🧠 IA Local</button><button data-page="financeIntelligence" type="button">🧩 Finance Intelligence</button>
       <button data-page="cloud" type="button">☁️ Cloud Ready</button>
       <button data-page="architecture" type="button">🏗️ Arquitetura</button>
       <button data-page="settings" type="button">⚙️ Configurações</button>
@@ -39,7 +39,7 @@
   <main class="app">
     <section id="dashboard" class="page active">
       <section class="hero">
-        <div><span class="chip">Dashboard Pro Analytics</span><h1>Controle financeiro profissional</h1><p>Base robusta com Dashboard Pro Analytics, mantendo botões e abas estáveis.</p></div>
+        <div><span class="chip">Finance Intelligence</span><h1>Controle financeiro profissional</h1><p>Central de inteligência financeira local com indicadores, riscos, padrões e recomendações.</p></div>
         <div class="heroScore"><small>Score financeiro</small><strong id="heroScore">0</strong><span id="heroLabel">Calculando...</span></div>
       </section>
       <section class="cards">
@@ -117,6 +117,41 @@
       <section class="panel"><h2>Alertas</h2><div id="aiAlerts"></div></section>
     </section>
 
+    
+    <section id="financeIntelligence" class="page">
+      <section class="panel premium">
+        <h2>Finance Intelligence</h2>
+        <div class="alert">
+          Central avançada de inteligência financeira local: saúde, liquidez, estabilidade, investimento, riscos e recomendações.
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Índices financeiros</h2>
+        <div id="fiIndexes"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Diagnóstico inteligente</h2>
+        <div id="fiDiagnosis"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Riscos detectados</h2>
+        <div id="fiRisks"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Recomendações automáticas</h2>
+        <div id="fiRecommendations"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Metas inteligentes</h2>
+        <div id="fiGoalInsights"></div>
+      </section>
+    </section>
+
     <section id="cloud" class="page">
       <section class="panel premium"><h2>Cloud Ready</h2><div class="alert">Preparado para Firebase, Login Google, Cloud Functions e IA real sem carregar scripts externos.</div></section>
       <section class="panel"><h2>Checklist</h2><div id="cloudChecklist"></div></section>
@@ -144,6 +179,6 @@
     <button class="tab" data-page="ai" type="button">🧠<span>IA</span></button>
   </nav>
 
-  <script src="./app.js?v=dashproanalytics"></script>
+  <script src="./app.js?v=financeintelligence"></script>
 </body>
 </html>
