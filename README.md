@@ -1,18 +1,31 @@
-# R💰 Ramalho Finance Legacy Pro Alpha Professional Core
+# R💰 Ramalho Finance Supabase Cloud READY
 
-Atualização segura baseada na Goals & Forecast Pro funcional.
+Versão com cadastro/login real e dados sincronizados entre celulares, computadores e navegadores usando Supabase.
 
-## Novidades
-- Professional Core
-- Finance Engine centralizado
-- Índice interno dos lançamentos
-- Filtros profissionais
-- Pesquisa por texto, tipo, categoria e valor
-- Categorias inteligentes preparadas
-- Auditoria de dados
-- Score de integridade
-- Detecção de duplicidades
-- Verificação de dados incompletos
+## Antes de usar
 
-## Abra com
-?v=professionalcore
+1. Abra o Supabase.
+2. Vá em SQL Editor.
+3. Execute o arquivo `SUPABASE_SETUP.sql`.
+4. Publique estes arquivos no GitHub Pages.
+5. Abra com:
+
+`?v=supabasecloud`
+
+## Recursos
+
+- Cadastro com e-mail e senha
+- Login real
+- Recuperação de senha
+- Sessão persistente
+- Dados por usuário
+- Sincronização com PostgreSQL/Supabase
+- Compatível com GitHub Pages
+- Sem Firebase
+
+## Arquivos importantes
+
+- `supabase-config.js`
+- `SUPABASE_SETUP.sql`
+- `app.js`
+- `index.html`

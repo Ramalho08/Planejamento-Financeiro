@@ -4,17 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07152f">
-  <title>Ramalho Finance Legacy Pro Alpha Professional Core</title>
-  <link rel="manifest" href="./manifest.json?v=professionalcore">
-  <link rel="stylesheet" href="./style.css?v=professionalcore">
+  <title>Ramalho Finance Supabase Cloud READY</title>
+  <link rel="manifest" href="./manifest.json?v=supabasecloud">
+  <link rel="stylesheet" href="./style.css?v=supabasecloud">
 </head>
 <body>
   <div class="bg"></div>
 
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-logo">R💰</div>
+      <h1>Ramalho Finance</h1>
+      <p>Entre para sincronizar seus dados em celulares, computadores e navegadores.</p>
+
+      <div class="auth-tabs">
+        <button id="showLoginBtn" class="active" type="button">Entrar</button>
+        <button id="showRegisterBtn" type="button">Cadastrar</button>
+      </div>
+
+      <div id="loginBox" class="auth-box">
+        <input id="loginEmail" type="email" placeholder="E-mail">
+        <input id="loginPassword" type="password" placeholder="Senha">
+        <button id="loginBtn" class="primary" type="button">Entrar</button>
+        <button id="resetPasswordBtn" type="button">Recuperar senha</button>
+      </div>
+
+      <div id="registerBox" class="auth-box hidden">
+        <input id="registerName" placeholder="Nome">
+        <input id="registerEmail" type="email" placeholder="E-mail">
+        <input id="registerPassword" type="password" placeholder="Senha">
+        <button id="registerBtn" class="primary" type="button">Criar conta</button>
+      </div>
+
+      <div id="authStatus" class="auth-note">
+        Supabase Cloud conectado. Dados sincronizados por usuário.
+      </div>
+    </div>
+  </section>
+
+
   <header class="top">
     <button id="menuBtn" class="icon" type="button">☰</button>
-    <div class="brand"><b>R💰 Ramalho Finance</b><small>Professional Core</small></div>
-    <button id="themeBtn" class="icon" type="button">◐</button>
+    <div class="brand"><b>R💰 Ramalho Finance</b><small>Supabase Cloud READY</small></div>
+    <button id="userBtn" class="icon" type="button" title="Conta">👤</button><button id="themeBtn" class="icon" type="button">◐</button>
   </header>
 
   <div id="drawerBackdrop" class="backdrop hidden"></div>
@@ -250,6 +282,16 @@
         <button id="demoBtn" class="primary" type="button">Carregar exemplo</button>
         <button id="clearBtn" class="danger" type="button">Limpar dados</button>
       </section>
+      
+      <section class="panel premium">
+        <h2>Conta Cloud</h2>
+        <div id="cloudAccountInfo"></div>
+        <div class="actions">
+          <button id="syncNowBtn" class="primary" type="button">Sincronizar agora</button>
+          <button id="logoutBtn" type="button">Sair da conta</button>
+        </div>
+      </section>
+
       <section class="panel"><h2>Sistema</h2><div id="systemInfo"></div></section>
     </section>
   </main>
@@ -261,6 +303,8 @@
     <button class="tab" data-page="ai" type="button">🧠<span>IA</span></button>
   </nav>
 
-  <script src="./app.js?v=professionalcore"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./supabase-config.js?v=supabasecloud"></script>
+  <script src="./app.js?v=supabasecloud"></script>
 </body>
 </html>

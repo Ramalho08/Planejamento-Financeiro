@@ -2,7 +2,7 @@
 "use strict";
 
 const RF = {};
-const KEY = "rf_professional_core_state";
+const KEY = "rf_supabase_cloud_cache";
 const routes = ["dashboard","transactions","wallets","goals","reports","ai","cloud","architecture","settings"];
 const categories = ["Salário","Alimentação","Transporte","Moradia","Saúde","Educação","Lazer","Cartão","Investimentos","Assinaturas","Pix","Outros"];
 
@@ -573,7 +573,7 @@ function renderProfessionalCoreEngine(){
     <div class="core-card"><small>Categorias usadas</small><h3>${d.categoryCount}</h3></div>
     <div class="core-card"><small>Índice interno</small><h3>${d.indexed.length}</h3></div>
   </div>
-  <div class="alert core-good"><b>Finance Engine:</b> cálculos, índices, filtros e verificações centralizados no Professional Core.</div>`;
+  <div class="alert core-good"><b>Finance Engine:</b> cálculos, índices, filtros e verificações centralizados no Supabase Cloud READY.</div>`;
 }
 function initProfessionalCoreFilters(){
   const cat = RF.$("coreCategory");
@@ -641,7 +641,7 @@ function renderProfessionalCoreAudit(){
   if(!box) return;
   const d = coreEngineData();
   const audit = [];
-  audit.push(["Sistema","Professional Core ativo","core-good"]);
+  audit.push(["Sistema","Supabase Cloud READY ativo","core-good"]);
   audit.push(["Persistência","localStorage funcionando","core-good"]);
   audit.push(["Transações",`${d.all.length} item(ns) no histórico`,"core-good"]);
   if(d.duplicates.length) audit.push(["Duplicados",`${d.duplicates.length} possível(eis) duplicado(s)`,"core-warn"]);
@@ -681,6 +681,246 @@ function renderArchitecture(){
   RF.$("moduleMap").innerHTML = mods.map(x=>`<div class="alert"><b>${x}</b><p>Módulo interno do bundle profissional.</p></div>`).join("");
 }
 
+
+let sb = null;
+let cloudUser = null;
+let cloudReady = false;
+let syncBusy = false;
+
+function initSupabaseClient(){
+  if(!window.supabase || !window.RF_SUPABASE_URL || !window.RF_SUPABASE_ANON_KEY){
+    console.warn("Supabase SDK/config ausente.");
+    return null;
+  }
+  return window.supabase.createClient(window.RF_SUPABASE_URL, window.RF_SUPABASE_ANON_KEY);
+}
+function setAuthStatus(msg, type=""){
+  const box = RF.$("authStatus");
+  if(box){
+    box.className = "auth-note " + type;
+    box.textContent = msg;
+  }
+}
+function showLogin(){
+  RF.$("loginBox")?.classList.remove("hidden");
+  RF.$("registerBox")?.classList.add("hidden");
+  RF.$("showLoginBtn")?.classList.add("active");
+  RF.$("showRegisterBtn")?.classList.remove("active");
+}
+function showRegister(){
+  RF.$("registerBox")?.classList.remove("hidden");
+  RF.$("loginBox")?.classList.add("hidden");
+  RF.$("showRegisterBtn")?.classList.add("active");
+  RF.$("showLoginBtn")?.classList.remove("active");
+}
+function toggleAuthScreen(show){
+  RF.$("authScreen")?.classList.toggle("hidden", !show);
+}
+function profileName(){
+  return cloudUser?.user_metadata?.name || cloudUser?.email || "Usuário";
+}
+async function registerCloud(){
+  const name = (RF.$("registerName")?.value || "").trim();
+  const email = (RF.$("registerEmail")?.value || "").trim();
+  const password = RF.$("registerPassword")?.value || "";
+  if(!name || !email || password.length < 6){
+    return setAuthStatus("Preencha nome, e-mail e senha com pelo menos 6 caracteres.", "sync-warn");
+  }
+  setAuthStatus("Criando conta...", "sync-warn");
+  const { data, error } = await sb.auth.signUp({ email, password, options:{ data:{ name } } });
+  if(error) return setAuthStatus(error.message, "sync-bad");
+  cloudUser = data.user;
+  setAuthStatus("Conta criada. Se o Supabase pedir confirmação, confirme pelo e-mail.", "sync-ok");
+  await afterAuthChanged();
+}
+async function loginCloud(){
+  const email = (RF.$("loginEmail")?.value || "").trim();
+  const password = RF.$("loginPassword")?.value || "";
+  if(!email || !password) return setAuthStatus("Preencha e-mail e senha.", "sync-warn");
+  setAuthStatus("Entrando...", "sync-warn");
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if(error) return setAuthStatus(error.message, "sync-bad");
+  cloudUser = data.user;
+  await afterAuthChanged();
+}
+async function resetPassword(){
+  const email = (RF.$("loginEmail")?.value || "").trim();
+  if(!email) return setAuthStatus("Digite seu e-mail para recuperar a senha.", "sync-warn");
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.href.split("#")[0] });
+  if(error) return setAuthStatus(error.message, "sync-bad");
+  setAuthStatus("E-mail de recuperação enviado.", "sync-ok");
+}
+async function logoutCloud(){
+  if(sb) await sb.auth.signOut();
+  cloudUser = null;
+  toggleAuthScreen(true);
+  location.reload();
+}
+async function ensureProfile(){
+  if(!cloudUser) return;
+  await sb.from("profiles").upsert({
+    id: cloudUser.id,
+    email: cloudUser.email,
+    name: profileName(),
+    updated_at: new Date().toISOString()
+  });
+}
+function txToRow(tx){
+  return {
+    id: tx.id,
+    user_id: cloudUser.id,
+    description: tx.description || "",
+    amount: Number(tx.amount || 0),
+    type: tx.type || "expense",
+    category: tx.category || "Outros",
+    date: tx.date || RF.today(),
+    created_at: tx.created_at || new Date().toISOString()
+  };
+}
+function rowToTx(row){
+  return {
+    id: row.id,
+    description: row.description,
+    amount: Number(row.amount || 0),
+    type: row.type,
+    category: row.category,
+    date: row.date,
+    created_at: row.created_at
+  };
+}
+function walletToRow(w){
+  return {
+    id: w.id,
+    user_id: cloudUser.id,
+    name: w.name || "Carteira",
+    balance: Number(w.balance || 0),
+    created_at: w.created_at || new Date().toISOString()
+  };
+}
+function rowToWallet(row){
+  return { id: row.id, name: row.name, balance: Number(row.balance || 0), created_at: row.created_at };
+}
+function goalToRow(g){
+  return {
+    id: g.id,
+    user_id: cloudUser.id,
+    name: g.name || "Meta",
+    target: Number(g.target || 0),
+    saved: Number(g.saved || 0),
+    created_at: g.created_at || new Date().toISOString()
+  };
+}
+function rowToGoal(row){
+  return { id: row.id, name: row.name, target: Number(row.target || 0), saved: Number(row.saved || 0), created_at: row.created_at };
+}
+async function pullCloud(){
+  if(!cloudUser || syncBusy) return;
+  syncBusy = true;
+  try{
+    const [txRes, walletRes, goalRes] = await Promise.all([
+      sb.from("transactions").select("*").eq("user_id", cloudUser.id).order("date", { ascending:false }),
+      sb.from("wallets").select("*").eq("user_id", cloudUser.id).order("created_at", { ascending:false }),
+      sb.from("goals").select("*").eq("user_id", cloudUser.id).order("created_at", { ascending:false })
+    ]);
+    if(txRes.error) throw txRes.error;
+    if(walletRes.error) throw walletRes.error;
+    if(goalRes.error) throw goalRes.error;
+    RF.state.transactions = (txRes.data || []).map(rowToTx);
+    RF.state.wallets = (walletRes.data || []).map(rowToWallet);
+    RF.state.goals = (goalRes.data || []).map(rowToGoal);
+    save();
+    renderAll();
+  }catch(err){
+    console.error(err);
+    alert("Erro ao baixar dados do Supabase: " + err.message);
+  }finally{
+    syncBusy = false;
+  }
+}
+async function pushCloud(){
+  if(!cloudUser || syncBusy) return;
+  syncBusy = true;
+  try{
+    await ensureProfile();
+    const txRows = (RF.state.transactions || []).map(txToRow);
+    const walletRows = (RF.state.wallets || []).map(walletToRow);
+    const goalRows = (RF.state.goals || []).map(goalToRow);
+    if(txRows.length){
+      const { error } = await sb.from("transactions").upsert(txRows);
+      if(error) throw error;
+    }
+    if(walletRows.length){
+      const { error } = await sb.from("wallets").upsert(walletRows);
+      if(error) throw error;
+    }
+    if(goalRows.length){
+      const { error } = await sb.from("goals").upsert(goalRows);
+      if(error) throw error;
+    }
+  }catch(err){
+    console.error(err);
+    alert("Erro ao enviar dados ao Supabase: " + err.message);
+  }finally{
+    syncBusy = false;
+  }
+}
+async function syncCloud(){
+  if(!cloudUser) return;
+  await pushCloud();
+  await pullCloud();
+}
+async function afterAuthChanged(){
+  if(!cloudUser){
+    toggleAuthScreen(true);
+    return;
+  }
+  toggleAuthScreen(false);
+  await ensureProfile();
+  await pullCloud();
+  renderAll();
+}
+async function initCloudAuth(){
+  sb = initSupabaseClient();
+  if(!sb){
+    setAuthStatus("Supabase não configurado.", "sync-bad");
+    toggleAuthScreen(true);
+    return;
+  }
+  RF.$("showLoginBtn")?.addEventListener("click", showLogin);
+  RF.$("showRegisterBtn")?.addEventListener("click", showRegister);
+  RF.$("loginBtn")?.addEventListener("click", loginCloud);
+  RF.$("registerBtn")?.addEventListener("click", registerCloud);
+  RF.$("resetPasswordBtn")?.addEventListener("click", resetPassword);
+  RF.$("logoutBtn")?.addEventListener("click", logoutCloud);
+  RF.$("syncNowBtn")?.addEventListener("click", syncCloud);
+  RF.$("userBtn")?.addEventListener("click", ()=>setPage("settings"));
+
+  const { data } = await sb.auth.getSession();
+  cloudUser = data.session?.user || null;
+
+  sb.auth.onAuthStateChange(async (_event, session)=>{
+    cloudUser = session?.user || null;
+    await afterAuthChanged();
+  });
+
+  await afterAuthChanged();
+}
+function renderCloudAccount(){
+  const box = RF.$("cloudAccountInfo");
+  if(!box) return;
+  if(!cloudUser){
+    box.innerHTML = `<div class="alert sync-warn">Nenhum usuário logado.</div>`;
+    return;
+  }
+  box.innerHTML = `<div class="alert sync-ok">
+    <b>${profileName()}</b>
+    <p>${cloudUser.email}</p>
+    <span class="cloud-pill">Supabase Auth</span>
+    <span class="cloud-pill">PostgreSQL</span>
+    <span class="cloud-pill">GitHub Pages OK</span>
+  </div>`;
+}
+
 function initSettings(){
   RF.$("demoBtn").addEventListener("click",()=>{
     RF.state.transactions = [
@@ -700,7 +940,7 @@ function initSettings(){
   });
 }
 function renderSettings(){
-  RF.$("systemInfo").innerHTML = `<div class="alert"><b>Versão:</b> Professional Core</div><div class="alert"><b>Armazenamento:</b> localStorage</div><div class="alert"><b>Pronto para:</b> Firebase, IA Cloud e PDF/OCR</div>`;
+  RF.$("systemInfo").innerHTML = `<div class="alert"><b>Versão:</b> Supabase Cloud READY</div><div class="alert"><b>Armazenamento:</b> localStorage</div><div class="alert"><b>Pronto para:</b> Firebase, IA Cloud e PDF/OCR</div>`;
 }
 
 function applyTheme(){
@@ -720,6 +960,7 @@ function renderAll(){
   renderCloud();
   renderArchitecture();
   renderSettings();
+  renderCloudAccount();
 }
 function initTheme(){
   RF.$("themeBtn").addEventListener("click",()=>{
@@ -730,6 +971,7 @@ function initTheme(){
 function init(){
   try{
     initNavigation();
+    initCloudAuth();
     initTheme();
     initTransactions();
     initWallets();
@@ -739,7 +981,7 @@ function init(){
     initForecastPro();
     renderAll();
     window.RF = RF;
-    console.log("Ramalho Finance Professional Core iniciado.");
+    console.log("Ramalho Finance Supabase Cloud READY iniciado.");
   }catch(err){
     console.error(err);
     showError("Erro ao iniciar: "+err.message);
