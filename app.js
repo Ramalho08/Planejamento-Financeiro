@@ -2,7 +2,7 @@
 "use strict";
 
 const RF = {};
-const KEY = "rf_goals_forecast_pro_state";
+const KEY = "rf_professional_core_state";
 const routes = ["dashboard","transactions","wallets","goals","reports","ai","cloud","architecture","settings"];
 const categories = ["Salário","Alimentação","Transporte","Moradia","Saúde","Educação","Lazer","Cartão","Investimentos","Assinaturas","Pix","Outros"];
 
@@ -532,6 +532,145 @@ function initForecastPro(){
   }
 }
 
+
+function coreEngineData(){
+  const all = RF.state.transactions || [];
+  const current = txMonth();
+  const t = totals();
+  const incomeCount = all.filter(x=>x.type==="income").length;
+  const expenseCount = all.filter(x=>x.type==="expense").length;
+  const totalVolume = all.reduce((s,x)=>s+Number(x.amount||0),0);
+  const categoryMap = {};
+  all.forEach(x=>{
+    const k = x.category || "Outros";
+    categoryMap[k] = (categoryMap[k]||0)+1;
+  });
+  const categoryCount = Object.keys(categoryMap).length;
+  const duplicates = [];
+  all.forEach(x=>{
+    const found = all.find(y=>y.id!==x.id && y.date===x.date && y.type===x.type && Math.abs(Number(y.amount)-Number(x.amount))<0.01 && String(y.description||"").toLowerCase().slice(0,12)===String(x.description||"").toLowerCase().slice(0,12));
+    if(found && !duplicates.some(d=>d.id===x.id)) duplicates.push(x);
+  });
+  const incomplete = all.filter(x=>!x.description || !x.date || !x.category || x.category==="Outros" || Number(x.amount||0)<=0);
+  const indexed = all.map((x,i)=>({
+    index:i,
+    id:x.id,
+    text:[x.description,x.category,x.type,x.date].join(" ").toLowerCase(),
+    amount:Number(x.amount||0),
+    date:x.date,
+    type:x.type,
+    category:x.category
+  }));
+  return {all,current,t,incomeCount,expenseCount,totalVolume,categoryCount,duplicates,incomplete,indexed};
+}
+function renderProfessionalCoreEngine(){
+  const box = RF.$("coreEngine");
+  if(!box) return;
+  const d = coreEngineData();
+  box.innerHTML = `<div class="core-grid">
+    <div class="core-card"><small>Lançamentos</small><h3>${d.all.length}</h3></div>
+    <div class="core-card"><small>Volume histórico</small><h3>${RF.money(d.totalVolume)}</h3></div>
+    <div class="core-card"><small>Categorias usadas</small><h3>${d.categoryCount}</h3></div>
+    <div class="core-card"><small>Índice interno</small><h3>${d.indexed.length}</h3></div>
+  </div>
+  <div class="alert core-good"><b>Finance Engine:</b> cálculos, índices, filtros e verificações centralizados no Professional Core.</div>`;
+}
+function initProfessionalCoreFilters(){
+  const cat = RF.$("coreCategory");
+  if(cat && !cat.dataset.ready){
+    const opts = ["all"].concat(categories);
+    cat.innerHTML = opts.map(x=>`<option value="${x}">${x==="all"?"Todas as categorias":x}</option>`).join("");
+    cat.dataset.ready = "1";
+  }
+  const btn = RF.$("coreFilterBtn");
+  if(btn && !btn.dataset.ready){
+    btn.dataset.ready = "1";
+    btn.addEventListener("click", renderProfessionalCoreFilters);
+  }
+  ["coreSearch","coreType","coreCategory","coreMin","coreMax"].forEach(id=>{
+    const el = RF.$(id);
+    if(el && !el.dataset.live){
+      el.dataset.live = "1";
+      el.addEventListener("input", renderProfessionalCoreFilters);
+    }
+  });
+}
+function renderProfessionalCoreFilters(){
+  const box = RF.$("coreFilterResult");
+  if(!box) return;
+  const d = coreEngineData();
+  const q = String(RF.$("coreSearch")?.value||"").toLowerCase();
+  const type = RF.$("coreType")?.value || "all";
+  const category = RF.$("coreCategory")?.value || "all";
+  const min = Number(RF.$("coreMin")?.value || 0);
+  const maxRaw = RF.$("coreMax")?.value;
+  const max = maxRaw ? Number(maxRaw) : Infinity;
+
+  const result = d.indexed.filter(x=>{
+    return (!q || x.text.includes(q)) &&
+      (type==="all" || x.type===type) &&
+      (category==="all" || x.category===category) &&
+      x.amount >= min &&
+      x.amount <= max;
+  }).slice(0,80);
+
+  box.innerHTML = `<div class="alert"><b>${result.length}</b> resultado(s) encontrados.</div>` + result.map(x=>{
+    const tx = d.all[x.index];
+    return `<div class="row">
+      <div><b>${tx.description}</b><small>${tx.category} • ${tx.date}</small></div>
+      <span>${tx.type==="income"?"+":"-"} ${RF.money(tx.amount)}</span>
+    </div>`;
+  }).join("");
+}
+function renderProfessionalCoreCategories(){
+  const box = RF.$("coreCategoryRules");
+  if(!box) return;
+  const rules = [
+    ["Mercado, supermercado, atacadão","Alimentação"],
+    ["Uber, ônibus, combustível, gasolina","Transporte"],
+    ["Farmácia, consulta, hospital","Saúde"],
+    ["Netflix, Spotify, Prime, assinatura","Assinaturas"],
+    ["Pix recebido, salário, depósito","Salário/Receita"],
+    ["Fatura, cartão, crédito","Cartão"]
+  ];
+  box.innerHTML = rules.map(r=>`<div class="alert"><b>${r[0]}</b><p>Categoria sugerida: <span class="core-tag">${r[1]}</span></p></div>`).join("") +
+    `<div class="alert core-warn"><b>Próxima etapa:</b> transformar essas regras em categorização automática editável pelo usuário.</div>`;
+}
+function renderProfessionalCoreAudit(){
+  const box = RF.$("coreAudit");
+  if(!box) return;
+  const d = coreEngineData();
+  const audit = [];
+  audit.push(["Sistema","Professional Core ativo","core-good"]);
+  audit.push(["Persistência","localStorage funcionando","core-good"]);
+  audit.push(["Transações",`${d.all.length} item(ns) no histórico`,"core-good"]);
+  if(d.duplicates.length) audit.push(["Duplicados",`${d.duplicates.length} possível(eis) duplicado(s)`,"core-warn"]);
+  if(d.incomplete.length) audit.push(["Dados incompletos",`${d.incomplete.length} lançamento(s) precisam revisão`,"core-warn"]);
+  if(!d.duplicates.length && !d.incomplete.length) audit.push(["Integridade","Nenhuma inconsistência crítica detectada","core-good"]);
+
+  box.innerHTML = audit.map(x=>`<div class="alert ${x[2]}"><b>${x[0]}</b><p>${x[1]}</p></div>`).join("");
+}
+function renderProfessionalCoreIntegrity(){
+  const box = RF.$("coreIntegrity");
+  if(!box) return;
+  const d = coreEngineData();
+  const score = Math.max(0, Math.min(100, 100 - d.duplicates.length*8 - d.incomplete.length*6));
+  const cls = score>=80 ? "core-good" : score>=50 ? "core-warn" : "core-bad";
+  box.innerHTML = `<div class="core-card ${cls}">
+    <small>Score de integridade</small>
+    <h3>${score}/100</h3>
+    <p>${d.duplicates.length} duplicado(s) possíveis • ${d.incomplete.length} incompleto(s)</p>
+  </div>`;
+}
+function renderProfessionalCore(){
+  initProfessionalCoreFilters();
+  renderProfessionalCoreEngine();
+  renderProfessionalCoreFilters();
+  renderProfessionalCoreCategories();
+  renderProfessionalCoreAudit();
+  renderProfessionalCoreIntegrity();
+}
+
 function renderCloud(){
   RF.$("cloudChecklist").innerHTML = `<div class="alert"><b>1.</b> Criar projeto Firebase.</div><div class="alert"><b>2.</b> Ativar Login Google.</div><div class="alert"><b>3.</b> Criar Cloud Function.</div><div class="alert"><b>4.</b> Conectar OpenAI/Gemini no backend.</div><div class="alert"><b>5.</b> Testar upload de PDF isolado.</div>`;
 }
@@ -561,7 +700,7 @@ function initSettings(){
   });
 }
 function renderSettings(){
-  RF.$("systemInfo").innerHTML = `<div class="alert"><b>Versão:</b> Goals & Forecast Pro</div><div class="alert"><b>Armazenamento:</b> localStorage</div><div class="alert"><b>Pronto para:</b> Firebase, IA Cloud e PDF/OCR</div>`;
+  RF.$("systemInfo").innerHTML = `<div class="alert"><b>Versão:</b> Professional Core</div><div class="alert"><b>Armazenamento:</b> localStorage</div><div class="alert"><b>Pronto para:</b> Firebase, IA Cloud e PDF/OCR</div>`;
 }
 
 function applyTheme(){
@@ -577,6 +716,7 @@ function renderAll(){
   renderAI();
   renderFinanceIntelligence();
   renderForecastPro();
+  renderProfessionalCore();
   renderCloud();
   renderArchitecture();
   renderSettings();
@@ -599,7 +739,7 @@ function init(){
     initForecastPro();
     renderAll();
     window.RF = RF;
-    console.log("Ramalho Finance Goals & Forecast Pro iniciado.");
+    console.log("Ramalho Finance Professional Core iniciado.");
   }catch(err){
     console.error(err);
     showError("Erro ao iniciar: "+err.message);

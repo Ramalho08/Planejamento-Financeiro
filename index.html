@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#07152f">
-  <title>Ramalho Finance Legacy Pro Alpha Goals & Forecast Pro</title>
-  <link rel="manifest" href="./manifest.json?v=goalsforecastpro">
-  <link rel="stylesheet" href="./style.css?v=goalsforecastpro">
+  <title>Ramalho Finance Legacy Pro Alpha Professional Core</title>
+  <link rel="manifest" href="./manifest.json?v=professionalcore">
+  <link rel="stylesheet" href="./style.css?v=professionalcore">
 </head>
 <body>
   <div class="bg"></div>
 
   <header class="top">
     <button id="menuBtn" class="icon" type="button">☰</button>
-    <div class="brand"><b>R💰 Ramalho Finance</b><small>Goals & Forecast Pro</small></div>
+    <div class="brand"><b>R💰 Ramalho Finance</b><small>Professional Core</small></div>
     <button id="themeBtn" class="icon" type="button">◐</button>
   </header>
 
@@ -29,7 +29,7 @@
       <button data-page="wallets" type="button">👛 Carteiras</button>
       <button data-page="goals" type="button">🎯 Metas</button>
       <button data-page="reports" type="button">📊 Relatórios</button>
-      <button data-page="ai" type="button">🧠 IA Local</button><button data-page="financeIntelligence" type="button">🧩 Finance Intelligence</button><button data-page="forecastPro" type="button">🔮 Forecast Pro</button>
+      <button data-page="ai" type="button">🧠 IA Local</button><button data-page="financeIntelligence" type="button">🧩 Finance Intelligence</button><button data-page="forecastPro" type="button">🔮 Forecast Pro</button><button data-page="professionalCore" type="button">🧬 Professional Core</button>
       <button data-page="cloud" type="button">☁️ Cloud Ready</button>
       <button data-page="architecture" type="button">🏗️ Arquitetura</button>
       <button data-page="settings" type="button">⚙️ Configurações</button>
@@ -39,7 +39,7 @@
   <main class="app">
     <section id="dashboard" class="page active">
       <section class="hero">
-        <div><span class="chip">Goals & Forecast Pro</span><h1>Controle financeiro profissional</h1><p>Planejamento financeiro com metas inteligentes, previsão de saldo e simulação mensal.</p></div>
+        <div><span class="chip">Professional Core</span><h1>Controle financeiro profissional</h1><p>Professional Core com motor financeiro, auditoria, filtros avançados e categorias inteligentes.</p></div>
         <div class="heroScore"><small>Score financeiro</small><strong id="heroScore">0</strong><span id="heroLabel">Calculando...</span></div>
       </section>
       <section class="cards">
@@ -187,6 +187,53 @@
       </section>
     </section>
 
+    
+    <section id="professionalCore" class="page">
+      <section class="panel premium">
+        <h2>Professional Core</h2>
+        <div class="alert">
+          Infraestrutura profissional: motor financeiro centralizado, auditoria, filtros avançados e categorias inteligentes.
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Finance Engine</h2>
+        <div id="coreEngine"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Filtros profissionais</h2>
+        <div class="form">
+          <input id="coreSearch" placeholder="Buscar descrição, categoria ou tipo">
+          <select id="coreType">
+            <option value="all">Todos os tipos</option>
+            <option value="income">Receitas</option>
+            <option value="expense">Despesas</option>
+          </select>
+          <select id="coreCategory"></select>
+          <input id="coreMin" type="number" inputmode="decimal" placeholder="Valor mínimo">
+          <input id="coreMax" type="number" inputmode="decimal" placeholder="Valor máximo">
+          <button id="coreFilterBtn" class="primary" type="button">Filtrar</button>
+        </div>
+        <div id="coreFilterResult"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Categorias inteligentes</h2>
+        <div id="coreCategoryRules"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Auditoria</h2>
+        <div id="coreAudit"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Integridade dos dados</h2>
+        <div id="coreIntegrity"></div>
+      </section>
+    </section>
+
     <section id="cloud" class="page">
       <section class="panel premium"><h2>Cloud Ready</h2><div class="alert">Preparado para Firebase, Login Google, Cloud Functions e IA real sem carregar scripts externos.</div></section>
       <section class="panel"><h2>Checklist</h2><div id="cloudChecklist"></div></section>
@@ -214,6 +261,6 @@
     <button class="tab" data-page="ai" type="button">🧠<span>IA</span></button>
   </nav>
 
-  <script src="./app.js?v=goalsforecastpro"></script>
+  <script src="./app.js?v=professionalcore"></script>
 </body>
 </html>
