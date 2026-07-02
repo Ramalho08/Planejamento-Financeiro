@@ -1,0 +1,15 @@
+{
+  "name": "Ramalho Finance Legacy Pro Alpha Professional Core",
+  "short_name": "Ramalho Finance",
+  "start_url": "./index.html?v=professionalcore",
+  "display": "standalone",
+  "background_color": "#030817",
+  "theme_color": "#07152f",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
