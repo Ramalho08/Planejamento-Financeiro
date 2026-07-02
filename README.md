@@ -1,31 +1,20 @@
-# R💰 Ramalho Finance Supabase Cloud READY
+# R💰 Ramalho Finance Supabase Cloud READY V2 — NO CACHE ROOT
 
-Versão com cadastro/login real e dados sincronizados entre celulares, computadores e navegadores usando Supabase.
+Suba os arquivos de dentro desta pasta na raiz do repositório.
 
-## Antes de usar
+Arquivos principais:
+- index.html
+- style.css
+- app-supabase-cloud-v2.js
+- supabase-config.js
+- manifest.json
+- SUPABASE_SETUP.sql
+- assets/
+- docs/
 
-1. Abra o Supabase.
-2. Vá em SQL Editor.
-3. Execute o arquivo `SUPABASE_SETUP.sql`.
-4. Publique estes arquivos no GitHub Pages.
-5. Abra com:
+Abra com:
 
-`?v=supabasecloud`
+?v=supabasecloudv2
 
-## Recursos
-
-- Cadastro com e-mail e senha
-- Login real
-- Recuperação de senha
-- Sessão persistente
-- Dados por usuário
-- Sincronização com PostgreSQL/Supabase
-- Compatível com GitHub Pages
-- Sem Firebase
-
-## Arquivos importantes
-
-- `supabase-config.js`
-- `SUPABASE_SETUP.sql`
-- `app.js`
-- `index.html`
+Se atualizou certo, aparece uma faixa no topo:
+✅ Supabase Cloud READY V2 carregado

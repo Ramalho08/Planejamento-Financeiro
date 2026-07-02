@@ -1,7 +1,7 @@
 {
-  "name": "Ramalho Finance Legacy Pro Alpha Professional Core",
+  "name": "Ramalho Finance Supabase Cloud READY V2",
   "short_name": "Ramalho Finance",
-  "start_url": "./index.html?v=professionalcore",
+  "start_url": "./index.html?v=supabasecloudv2",
   "display": "standalone",
   "background_color": "#030817",
   "theme_color": "#07152f",
